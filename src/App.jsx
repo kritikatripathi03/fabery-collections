@@ -3,7 +3,7 @@ function App() {
 
   return (
     <>
-    <div className="min-h-screen">
+    <div className="min-h-screen flex space-between">
       <Navbar></Navbar>
     </div>
     </>
