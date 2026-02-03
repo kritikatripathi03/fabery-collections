@@ -1,13 +1,9 @@
 import Navbar from "./components/Navbar";
-function App() {
-
+export default function App() {
   return (
-    <>
-    <div className="min-h-screen flex space-between">
-      <Navbar></Navbar>
+    <div className="bg-red-500 text-white text-4xl p-10">
+      TAILWIND TEST
     </div>
-    </>
-  )
+  );
 }
 
-export default App
