@@ -15,8 +15,8 @@ export default function Navbar() {
             alt="FABERY"
           />
           <img
-            className="py-2h-10 w-26"
-            src="src\assets\fabery.png"
+            className="py-2 h-20 w-26"
+            src="src\assets\logo-new.png"
             alt="FABERY"
           />
         </div>
