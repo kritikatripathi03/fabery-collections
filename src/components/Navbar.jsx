@@ -1,6 +1,7 @@
 export default function Navbar() {
   return (
     <nav>
+      
       <div className="flex items-center justify-between px-8 py-4">
         <div className="flex gap-6">
           <span className="px-2 font-bold">Home</span>
