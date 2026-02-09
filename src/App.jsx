@@ -1,3 +1,4 @@
+import Categories from "./components/Categories";
 import Navbar from "./components/Navbar";
 
 export default function App() {
@@ -5,7 +6,7 @@ export default function App() {
     <div>
 
       <Navbar></Navbar>
-      
+      <Categories></Categories>
     </div>
   );
 }
