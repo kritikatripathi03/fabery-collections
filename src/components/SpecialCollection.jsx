@@ -12,14 +12,16 @@ export default function SpecialCollection () {
                     Go To Shop
                 </div>
             </div>
-            <div className="max-w-[360px] aspect-[3/4]">
-                <img src="src/assets/oversized-tshirt.jpg" className="w-full object-contain"/>
-            </div>
-            <div className="max-w-[360px] aspect-[3/4]">
-                <img src="src/assets/jeans.jpg" className="w-full object-contain"/>
-            </div>
-            <div className="max-w-[360px] aspect-[3/4]">
-                <img src="src/assets/jeans.jpg" className="w-full object-contain"/>
+            <div className="flex items-center justify-between">
+                <div className="w-[260px] sm:w-[300px] lg:w-[340px] aspect-[3/4] px-4 py-4">
+                    <img src="src/assets/oversized-tshirt.jpg" className="w-full h-full object-cover"/>
+                </div>
+                <div className="w-[260px] sm:w-[300px] lg:w-[340px] aspect-[3/4] px-4 py-4">
+                    <img src="src/assets/jeans.jpg" className="w-full h-full object-cover"/>
+                </div>
+                <div className="w-[260px] sm:w-[300px] lg:w-[340px] aspect-[3/4] px-4 py-4">
+                    <img src="src/assets/backside.jpg" className="w-full h-full object-cover"/>
+                </div>
             </div>
         </div>
     )
