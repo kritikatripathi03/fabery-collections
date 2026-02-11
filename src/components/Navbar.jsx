@@ -4,7 +4,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav>
+    <nav className="w-full bg-transparent mt-4">
       <div className="flex items-center justify-between px-8 py-4">
         <div className="hidden lg:flex gap-6">
           <span className="px-2 font-bold">Home</span>

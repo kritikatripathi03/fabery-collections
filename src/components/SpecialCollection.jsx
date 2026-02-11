@@ -1,26 +1,38 @@
 export default function SpecialCollection () {
     return (
-        <div className="flex items-center justify-between px-4 py-4">
-            <div className="flex flex-col gap-1 text-sm tracking-widest mb-4">
-                <div>
+        <div className="w-full flex flex-col lg:flex-row items-stretch px-4 py-4 min-h-[600px] gap-10">
+            <div className="flex flex-col py-12 lg:flex-[0_0_32%] md:flex-[0_0_32%]">
+                <div className="mt-6 text-5xl font-bold leading-tight">
                     NEW COLLECTION
                 </div>
-                <div>
-                    Summer 2024
+                <div className="mt-8  text-2xl text-gray-600">
+                    Summer <br /> 2024
                 </div>
-                <div>
-                    Go To Shop
+                <div className="mt-auto mb-6 flex items-center gap-6">
+                    <button className="flex items-center gap-6 bg-gray-200 px-6 py-3">
+                        <span>Go To Shop</span>
+                        <span>--›</span>
+                    </button>
+                    <div className="flex gap-3">
+                        <button className="border border-gray-300 w-10 h-10 flex items-center justify-center">
+                            ‹
+                        </button>
+
+                        <button className="border border-gray-300 w-10 h-10 flex items-center justify-center">
+                            ›
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div className="flex items-center justify-between">
-                <div className="w-[260px] sm:w-[300px] lg:w-[340px] aspect-[3/4] px-4 py-4">
-                    <img src="src/assets/oversized-tshirt.jpg" className="w-full h-full object-cover"/>
+            <div className="flex flex-1 items-center gap-6">
+                <div className="flex-1 min-w-0 aspect-[3/4]">
+                    <img src="src/assets/oversized-tshirt.jpg" className="w-full h-full object-cover border border-gray-300"/>
                 </div>
-                <div className="w-[260px] sm:w-[300px] lg:w-[340px] aspect-[3/4] px-4 py-4">
-                    <img src="src/assets/jeans.jpg" className="w-full h-full object-cover"/>
+                <div className="hidden md:block flex-1 min-w-0 aspect-[3/4]">
+                    <img src="src/assets/jeans.jpg" className="w-full h-full object-cover border border-gray-300"/>
                 </div>
-                <div className="w-[260px] sm:w-[300px] lg:w-[340px] aspect-[3/4] px-4 py-4">
-                    <img src="src/assets/backside.jpg" className="w-full h-full object-cover"/>
+                <div className="hidden lg:block flex-1 min-w-0 aspect-[3/4]">
+                    <img src="src/assets/backside.jpg" className="w-full h-full object-cover border border-gray-300"/>
                 </div>
             </div>
         </div>
