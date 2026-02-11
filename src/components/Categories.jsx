@@ -1,7 +1,7 @@
 export default function Categories() {
     return (
         <div className="w-full bg-transparent mt-6">
-            <div className="max-w-4xl mx-auto lg:ml-2 px-4 sm:px-6 lg:px-10">
+            <div className="max-w-4xl mx-auto lg:ml-2 px-4 sm:px-2 lg:px-6">
                 <div className="flex flex-col gap-1 text-sm tracking-widest mb-4">
                     <span>MEN</span>
                     <span>WOMEN</span>

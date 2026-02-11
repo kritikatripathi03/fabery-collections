@@ -5,8 +5,8 @@ export default function Navbar() {
 
   return (
     <nav className="w-full bg-transparent mt-4">
-      <div className="flex items-center justify-between px-8 py-4">
-        <div className="hidden lg:flex gap-6">
+      <div className="flex items-center justify-between px-4">
+        <div className="hidden lg:flex gap-6 text-xl">
           <span className="px-2 font-bold">Home</span>
           <span className="px-2 font-bold">Collections</span>
           <span className="px-2 font-bold">New</span>
