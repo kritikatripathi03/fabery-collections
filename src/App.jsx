@@ -9,7 +9,7 @@ import ThisWeek from "./components/ThisWeek";
 
 export default function App() {
   return (
-    <div className="px-4 py-4">
+    <div className="px-4 py-2">
       <Navbar></Navbar>
       <Categories></Categories>
       <SpecialCollection></SpecialCollection>
