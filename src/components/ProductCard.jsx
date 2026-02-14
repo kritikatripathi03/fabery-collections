@@ -1,12 +1,12 @@
-export default function ProductCard({ image, category, title, price }) {
+export default function ProductCard({ image, category, title, price, aspect = "aspect-[3/4]" }) {
   return (
     <div className="w-full">
       {/* IMAGE BOX */}
-      <div className="relative aspect-[3/4] border border-gray-300 bg-white">
+      <div className={`relative ${aspect} border border-gray-300 bg-white`}>
         <img
           src={image}
           alt="Product"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
         />
 
         {/* Floating Plus Button */}

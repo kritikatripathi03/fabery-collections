@@ -44,7 +44,7 @@ export default function ThisWeek() {
           </a>
         </div>
       </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-4">
           {products.map((product, index) => (
             <ProductCard
               key={index}
