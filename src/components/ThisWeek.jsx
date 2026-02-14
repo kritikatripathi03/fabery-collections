@@ -1,3 +1,36 @@
+import ProductCard from "./ProductCard";
+import tshirt1 from "../assets/t-shirt-1.jpg";
+import tshirt2 from "../assets/t-shirt-2.jpg";
+import tshirt3 from "../assets/t-shirt-3.jpg";
+import tshirt4 from "../assets/t-shirt-4.png";
+
+const products = [
+  {
+    image: tshirt1,
+    category: "V-Neck T-Shirt",
+    title: "Embroidered Seersucker Shirt",
+    price: "99",
+  },
+  {
+    image: tshirt2,
+    category: "Cotton T Shirt",
+    title: "Basic Slim Fit T-Shirt",
+    price: "99",
+  },
+  {
+    image: tshirt3,
+    category: "Henley T-Shirt",
+    title: "Blurred Print T-Shirt",
+    price: "99",
+  },
+  {
+    image: tshirt4,
+    category: "Crewneck T-Shirt",
+    title: "Full Sleeve Zipper",
+    price: "99",
+  },
+];
+
 export default function ThisWeek() {
   return (
     <div>
@@ -11,20 +44,17 @@ export default function ThisWeek() {
           </a>
         </div>
       </div>
-      <div className="flex flex-1 items-center gap-10">
-        <div className="flex-1 min-w-0 aspect-[1/1]">
-          <img src="src\assets\t-shirt-1.jpg" className="w-full h-full object-cover border border-gray-300"/>
-        </div>
-        <div className="flex-1 min-w-0 aspect-[1/1]">
-          <img src="src\assets\t-shirt-2.jpg" className="w-full h-full object-cover border border-gray-300"/>
-        </div>
-        <div className="flex-1 min-w-0 aspect-[1/1]">
-          <img src="src\assets\t-shirt-3.jpg" className="w-full h-full object-cover border border-gray-300"/>
-        </div>
-        <div className="flex-1 min-w-0 aspect-[1/1]">
-          <img src="src\assets\t-shirt-4.jpg" className="w-full h-full object-cover border border-gray-300"/>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-10">
+          {products.map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              category={product.category}
+              title={product.title}
+              price={product.price}
+            />
+          ))}
         </div>
       </div>
-    </div>
   );
 }
