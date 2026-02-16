@@ -33,7 +33,7 @@ const products = [
 
 export default function ThisWeek() {
   return (
-    <div>
+    <div className="px-4 py-4">
       <div className="flex items-end justify-between px-4 py-4 min-h-[150px]">
         <div className="text-5xl font-bold leading-tight">
           NEW <br /> THIS WEEK

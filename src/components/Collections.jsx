@@ -34,7 +34,7 @@ const products = [
 
 export default function Collections() {
   return (
-    <div className="px-4 py-4">
+    <div className="px-8 py-8">
       <div className="flex items-end justify-between min-h-[150px]">
         <div className="text-5xl font-bold leading-tight">
           FÄBERY <br /> COLLECTIONS <br /> 25-26

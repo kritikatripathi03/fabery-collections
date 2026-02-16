@@ -1,6 +1,6 @@
 export default function SpecialCollection () {
     return (
-        <div className="w-full flex flex-col lg:flex-row items-stretch px-4 py-4 min-h-[400px] gap-6">
+        <div className="w-full flex flex-col lg:flex-row items-stretch px-8 py-8 min-h-[400px] gap-6">
             <div className="flex flex-col py-6 lg:flex-[0_0_32%] md:flex-[0_0_32%]">
                 <div className="mt-auto text-5xl font-bold leading-tight">
                     NEW <br /> COLLECTION

@@ -1,6 +1,6 @@
 export default function ImageGallery() {
   return (
-    <div className="w-full flex justify-between items-start gap-10 py-20">
+    <div className="w-full flex justify-between items-start gap-10 px-4 py-20">
       {/* Image 1 */}
       <div className="flex-1">
         <div className="aspect-[3/4] overflow-hidden">
