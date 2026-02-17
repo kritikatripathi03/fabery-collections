@@ -1,3 +1,5 @@
+import search from "../assets/search.png";
+
 export default function Categories() {
     return (
         <div className="w-full bg-transparent mt-6 px-4 py-4">
@@ -16,7 +18,7 @@ export default function Categories() {
                     />
                     {/* Search icon */}
                     <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500">
-                        <img src="src/assets/search.png" className="h-7 w-8"/>
+                        <img src={search} className="h-7 w-8"/>
                     </span>
                 </div>
             </div>

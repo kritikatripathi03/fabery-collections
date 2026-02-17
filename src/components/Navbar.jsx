@@ -1,4 +1,9 @@
 import { useState } from "react";
+import logoSmall from "../assets/logo-small.png";
+import logo from "../assets/logo-new.png";
+import wishlist from "../assets/wishlist-icon.png";
+import cart from "../assets/cart.png";
+import profilePic from "../assets/profile.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -20,13 +25,13 @@ export default function Navbar() {
         <div className="flex gap-6">
           <img
             className="h-16 w-16"
-            src="src\assets\logo-small.png"
+            src={logoSmall}
             alt="FABERY"
           />
           
           <img
             className="hidden sm:block py-2 h-20 w-26"
-            src="src\assets\logo-new.png"
+            src={logo}
             alt="FABERY"
           />
         </div>
@@ -34,7 +39,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <img
             className="hidden md:flex h-12 w-12"
-            src="src\assets\wishlist-icon.png"
+            src={wishlist}
             alt="WISHLIST"
           />
           <div className="relative flex items-center ml-10 mr-10">
@@ -42,13 +47,13 @@ export default function Navbar() {
                 Cart
             </button>
             <div className="absolute right-0 translate-x-1/2 bg-white border-4 border-black rounded-full h-10 w-10 flex items-center justify-center">
-                <img className="h-5 w-5" src="src\assets\cart.png" alt="WISHLIST" />
+                <img className="h-5 w-5" src={cart} alt="WISHLIST" />
             </div>
           </div>
           
           <img
             className="h-12 w-12"
-            src="src\assets\profile.png"
+            src={profilePic}
             alt="WISHLIST"
           />
         </div>

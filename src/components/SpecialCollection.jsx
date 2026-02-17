@@ -1,3 +1,7 @@
+import img1 from "../assets/oversized-tshirt.jpg";
+import img2 from "../assets/jeans.jpg";
+import img3 from "../assets/backside.jpg";
+
 export default function SpecialCollection () {
     return (
         <div className="w-full flex flex-col lg:flex-row items-stretch px-8 py-8 min-h-[400px] gap-6">
@@ -26,13 +30,13 @@ export default function SpecialCollection () {
             </div>
             <div className="flex flex-1 items-center gap-6">
                 <div className="flex-1 min-w-0 aspect-[3/4]">
-                    <img src="src/assets/oversized-tshirt.jpg" className="w-full h-full object-cover border border-gray-300"/>
+                    <img src={img1} className="w-full h-full object-cover border border-gray-300"/>
                 </div>
                 <div className="hidden md:block flex-1 min-w-0 aspect-[3/4]">
-                    <img src="src/assets/jeans.jpg" className="w-full h-full object-cover border border-gray-300"/>
+                    <img src={img2} className="w-full h-full object-cover border border-gray-300"/>
                 </div>
                 <div className="hidden lg:block flex-1 min-w-0 aspect-[3/4]">
-                    <img src="src/assets/backside.jpg" className="w-full h-full object-cover border border-gray-300"/>
+                    <img src={img3} className="w-full h-full object-cover border border-gray-300"/>
                 </div>
             </div>
         </div>
