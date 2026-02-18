@@ -6,5 +6,5 @@ body {
     background-color: #ffffff;
     background-image: radial-gradient(#c3c3c3 0.5px, #ffffff 0.5px);
     background-size: 10px 10px;
-    font-family: 'Inter', sans-serif;
+    font: 'Beatrice Deck Trial';
 }

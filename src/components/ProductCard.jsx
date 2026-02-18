@@ -21,10 +21,10 @@ export default function ProductCard({ image, category, title, price, aspect = "a
 
       {/* PRODUCT INFO */}
       <div className="flex flex-col flex-grow mt-4">
-        <p className="text-gray-500 text-sm">{category}</p>
+        <p className="text-gray-500 font-medium text-sm">{category}</p>
 
         <div className="flex justify-between items-center mt-1">
-          <h3 className="font-semibold text-lg min-h-[48px]">{title}</h3>
+          <h3 className="font-extrabold text-lg min-h-[48px]">{title}</h3>
 
           <span className="font-semibold">${price}</span>
         </div>

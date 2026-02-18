@@ -12,9 +12,9 @@ export default function Navbar() {
     <nav className="w-full bg-transparent mt-4 px-4 py-4">
       <div className="flex items-center justify-between px-4">
         <div className="hidden lg:flex gap-6 text-xl">
-          <span className="px-2 font-bold">Home</span>
-          <span className="px-2 font-bold">Collections</span>
-          <span className="px-2 font-bold">New</span>
+          <span className="px-2 font-bold hover:font-extrabold">Home</span>
+          <span className="px-2 font-bold hover:font-extrabold">Collections</span>
+          <span className="px-2 font-bold hover:font-extrabold">New</span>
         </div>
 
         {/* Mobile Menu Button */}

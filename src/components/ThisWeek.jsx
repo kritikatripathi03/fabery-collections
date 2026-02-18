@@ -35,7 +35,7 @@ export default function ThisWeek() {
   return (
     <div className="px-4 py-4">
       <div className="flex items-end justify-between px-4 py-4 min-h-[150px]">
-        <div className="text-5xl font-bold leading-tight">
+        <div className="text-5xl font-extrabold leading-tight">
           NEW <br /> THIS WEEK
         </div>
         <div className="flex flex-col">
