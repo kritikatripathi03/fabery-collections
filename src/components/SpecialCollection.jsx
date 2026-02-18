@@ -1,6 +1,7 @@
 import img1 from "../assets/oversized-tshirt.jpg";
 import img2 from "../assets/jeans.jpg";
 import img3 from "../assets/backside.jpg";
+import arrow from "../assets/arrow.png";
 
 export default function SpecialCollection () {
     return (
@@ -15,7 +16,7 @@ export default function SpecialCollection () {
                 <div className="mt-auto mb-auto flex items-center justify-between gap-6">
                     <button className="flex items-center gap-6 bg-gray-200 px-6 py-3">
                         <span className="font-medium">Go To Shop</span>
-                        <span>--›</span>
+                        <span><img src={arrow} className="h-8 w-8"/></span>
                     </button>
                     <div className="flex gap-3">
                         <button className="border border-gray-300 w-10 h-10 flex items-center justify-center">
