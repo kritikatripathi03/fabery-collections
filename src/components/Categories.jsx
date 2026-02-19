@@ -5,9 +5,9 @@ export default function Categories() {
         <div className="w-full bg-transparent mt-6 px-4 py-4">
             <div className="max-w-4xl mx-auto lg:ml-2 px-4 sm:px-2 lg:px-6">
                 <div className="flex flex-col gap-1 text-sm tracking-widest mb-4">
-                    <span>MEN</span>
-                    <span>WOMEN</span>
-                    <span>KIDS</span>
+                    <span className="hover:underline"><a href='#'>MEN</a></span>
+                    <span className="hover:underline"><a href='#'>WOMEN</a></span>
+                    <span className="hover:underline"><a href='#'>KIDS</a></span>
                 </div>
 
                 <div className="relative">
