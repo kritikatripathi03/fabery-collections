@@ -10,13 +10,13 @@ export default function Footer() {
                     <span><a href="#" className="hover:underline font-medium">CAREERS</a></span>
                     <span><a href="#" className="hover:underline font-medium">CONTACT US</a></span>
                 </div>    
-                <div className="flex flex-col">
+                <div className="hover:underline flex flex-col">
                     <span className="font-medium text-gray-600">ADDRESS</span>
                     <br />
-                    <span><a href="#" className="hover:underline font-medium">DLF Cybercity</a></span>
-                    <span><a href="#" className="hover:underline font-medium">DLF Phase 2</a></span>
-                    <span><a href="#" className="hover:underline font-medium">Sector 24, Gurugram</a></span>
-                    <span><a href="#" className="hover:underline font-medium">Haryana, India, 122002</a></span>
+                    <span><a href="#" className="font-medium">DLF Cybercity</a></span>
+                    <span><a href="#" className="font-medium">DLF Phase 2</a></span>
+                    <span><a href="#" className="font-medium">Sector 24, Gurugram</a></span>
+                    <span><a href="#" className="font-medium">Haryana, India, 122002</a></span>
                 </div>    
                 <div className="flex flex-col">
                     <span className="font-medium text-gray-600">SOCIALS</span>
