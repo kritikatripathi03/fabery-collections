@@ -1,24 +1,29 @@
-import Categories from "./components/Categories";
-import Collections from "./components/Collections";
-import Footer from "./components/Footer";
-import ImageGallery from "./components/ImageGallery";
-import MiddleText from "./components/MiddleText";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import SpecialCollection from "./components/SpecialCollection";
-import ThisWeek from "./components/ThisWeek";
+import Home from "./components/Home";
+import Products from "./components/Products";
+import New from "./components/New";
+import Profile from "./components/Profile";
+import Cart from "./components/Cart";
+import Wishlist from "./components/Wishlist";
+import About from "./components/About";
 
 export default function App() {
   return (
-    <div className="">
+    <Router>
       <Navbar></Navbar>
-      <Categories></Categories>
-      <SpecialCollection></SpecialCollection>
-      <ThisWeek></ThisWeek>
-      <Collections></Collections>
-      <MiddleText></MiddleText>
-      <ImageGallery></ImageGallery>
-      <Footer></Footer>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/new" element={<New />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/about" element={<About />} />
+        
+      </Routes>
+    </Router>
   );
 }
 
