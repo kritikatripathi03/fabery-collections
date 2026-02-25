@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 
 export default function Products() {
   return (
-    <div className="flex gap-8 p-10">
+    <div className="flex gap-16 p-10">
       {/* Filters */}
       <div className="flex flex-col w-64 mt-10">
         <div className="flex-1 font-bold mt-4">Filters</div>
@@ -10,22 +10,40 @@ export default function Products() {
           <div className="flex flex-col">
             <div className="font-medium mb-2">Size</div>
             <div className="flex flex-wrap gap-3">
-              <button className="w-8 h-8 border border-black flex items-center justify-center">
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
                 XS
               </button>
-              <button className="w-8 h-8 border border-black flex items-center justify-center">
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
                 S
               </button>
-              <button className="w-8 h-8 border border-black flex items-center justify-center">
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
                 M
               </button>
-              <button className="w-8 h-8 border border-black flex items-center justify-center">
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
                 L
               </button>
-              <button className="w-8 h-8 border border-black flex items-center justify-center">
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
                 XL
               </button>
-              <button className="w-8 h-8 border border-black flex items-center justify-center">
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
                 XXL
               </button>
             </div>
@@ -52,29 +70,93 @@ export default function Products() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="flex-1 font-medium mt-2 mb-2">Category</div>
-          <div className="flex-1 mt-4">
-            <div className="flex flex-col gap-3">
-              <button className="border">T-Shirts</button>
-              <button className="border">Shirts</button>
-              <button className="border">Jeans</button>
-              <button className="border">Pants</button>
-              <button className="border">Tees</button>
-              <button className="border">Shoes</button>
-              <button className="border">Sandals</button>
-              <button className="border">Accessories</button>
+        <div className="flex-1 mt-4">
+          <div className="flex flex-col">
+            <div className="flex-1 font-medium mt-2 mb-2">Category</div>
+            <div className="flex-1 mt-4">
+              <div className="flex flex-col gap-3">
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  T-Shirts
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Shirts
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Jeans
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Pants
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Tees
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Shoes
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Sandals
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Accessories
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="flex-1 font-medium mt-2 mb-2">Gender</div>
-          <div className="flex-1 mt-4">
-            <div className="flex flex-col gap-3">
-              <button className="border">Male</button>
-              <button className="border">Female</button>
-              <button className="border">Boy</button>
-              <button className="border">Girl</button>
+        <div className="flex-1 mt-4">
+          <div className="flex flex-col">
+            <div className="flex-1 font-medium mt-2 mb-2">Gender</div>
+            <div className="flex-1 mt-4">
+              <div className="flex flex-col gap-3">
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Male
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Female
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Boy
+                </button>
+                <button
+                  className="bg-white text-black border border-black px-4 py-2 rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+                >
+                  Girl
+                </button>
+              </div>
             </div>
           </div>
         </div>
