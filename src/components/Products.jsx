@@ -165,7 +165,7 @@ export default function Products() {
       {/* Products */}
       <div className="flex-1">
         <div className="mt-auto text-5xl font-extrabold leading-tight">
-          PRODUCTS AT FABERY
+          PRODUCTS AT FABERYw
         </div>
       </div>
     </div>
