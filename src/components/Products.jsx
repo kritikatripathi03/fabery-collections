@@ -183,7 +183,8 @@ export default function Products() {
                             </div>
           </div>
           <div className="grid-col-2">
-            Hello
+            <button className="w-20 h-12 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300">Sort By</button>
           </div>
         </div>
       </div>
