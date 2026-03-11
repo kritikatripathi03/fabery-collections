@@ -19,7 +19,8 @@ export default function Categories() {
                     {/* Search icon */}
                     <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500">
                         <img src={search} className="h-7 w-8"/>
-                        <div></div>
+                        <div>
+                        </div>
                     </span>
                 </div>
             </div>
