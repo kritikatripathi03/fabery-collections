@@ -1,6 +1,5 @@
 import search from "../assets/search.png";
 
-
 export default function Products() {
   return (
     <div className="flex gap-16 p-10">
@@ -171,20 +170,28 @@ export default function Products() {
         <div className="grid grid-cols-2 mt-4">
           <div className="grid-col-1">
             <div className="relative">
-                                <input 
-                                type="text"
-                                placeholder="Search"
-                                className="lg:w-50 bg-gray-200 py-3 pl-10 pr-4 outline-none"
-                                />
-                                {/* Search icon */}
-                                <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500">
-                                    <img src={search} className="h-7 w-8"/>
-                                </span>
-                            </div>
+              <input
+                type="text"
+                placeholder="Search"
+                className="lg:w-50 bg-gray-200 py-3 pl-10 pr-4 outline-none"
+              />
+              {/* Search icon */}
+              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500">
+                <img src={search} className="h-7 w-8" />
+              </span>
+            </div>
           </div>
           <div className="grid-col-2">
-            <button className="w-20 h-16 border border-black flex items-center justify-center bg-white text-black border rounded-md 
-                   hover:bg-black hover:text-white transition duration-300">Sort By</button>
+            <select
+              className="w-40 h-12 border border-black bg-white text-black rounded-md px-2 
+               hover:bg-black hover:text-white transition duration-300 cursor-pointer"
+            >
+              <option value="relevance">Relevance</option>
+              <option value="popularity">Popularity</option>
+              <option value="lowToHigh">Price: Low to High</option>
+              <option value="highToLow">Price: High to Low</option>
+              <option value="rating">Rating</option>
+            </select>
           </div>
         </div>
       </div>
