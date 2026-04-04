@@ -4,7 +4,6 @@ import product1 from "../assets/back-tee.jpg";
 import product2 from "../assets/jeans-2.jpg";
 import product3 from "../assets/front-tee.jpg";
 import product4 from "../assets/jeans-3.jpg";
-import Footer from "./Footer";
 
 const products = [
   {
@@ -295,7 +294,6 @@ export default function Products() {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </div>
   );
 }

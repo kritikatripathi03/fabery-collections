@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import Wishlist from "./components/Wishlist";
 import About from "./components/About";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         
       </Routes>
+      <Footer></Footer>
     </Router>
   );
 }

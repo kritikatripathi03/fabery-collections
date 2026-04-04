@@ -15,7 +15,6 @@ export default function Home() {
             <Collections></Collections>
             <MiddleText></MiddleText>
             <ImageGallery></ImageGallery>
-            <Footer></Footer>
         </div>
     );
 }

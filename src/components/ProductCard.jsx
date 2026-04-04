@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function ProductCard({ image, category, title, price, aspect = "aspect-[3/4]" }) {
+  const navigate = useNavigate();
   return (
     <div className="w-full">
       {/* IMAGE BOX */}
@@ -14,7 +17,7 @@ export default function ProductCard({ image, category, title, price, aspect = "a
           className="absolute bottom-4 left-1/2 -translate-x-1/2 
                            bg-gray-200 w-10 h-10 flex items-center 
                            justify-center text-xl"
-        >
+        onClick={() => navigate("/product")}>
           +
         </button>
       </div>
