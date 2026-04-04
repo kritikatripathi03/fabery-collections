@@ -39,8 +39,8 @@ export default function Products() {
       <div className="flex gap-16 p-10">
         {/* Filters */}
         <div className="flex flex-col w-64 mt-10">
-          <div className="flex-1 font-bold mt-4">Filters</div>
-          <div className="flex-1 mt-4">
+          <div className="font-bold mt-4">Filters</div>
+          <div className="mt-4">
             <div className="flex flex-col">
               <div className="font-medium mb-2">Size</div>
               <div className="flex flex-wrap gap-3">
@@ -83,7 +83,7 @@ export default function Products() {
               </div>
             </div>
           </div>
-          <div className="flex-1 mt-4">
+          <div className="mt-4">
             <div className="flex flex-col">
               <div className="font-medium mb-2">Price Range</div>
               <div className="flex flex-wrap gap-5">
@@ -104,7 +104,7 @@ export default function Products() {
               </div>
             </div>
           </div>
-          <div className="flex-1 mt-4">
+          <div className="mt-4">
             <div className="flex flex-col">
               <div className="flex-1 font-medium mt-2 mb-2">Category</div>
               <div className="flex-1 mt-4">
@@ -199,10 +199,10 @@ export default function Products() {
         {/* Products */}
         <div className="flex-1">
           <div className="mt-auto text-5xl font-extrabold leading-tight">
-            PRODUCTS AT FABERY
+            PRODUCTS AT FÄBERY
           </div>
-          <div className="grid grid-cols-2 mt-4">
-            <div className="grid-col-1">
+          <div className="flex flex-wrap gap-3 mt-4">
+            <div className="flex-1">
               <div className="relative">
                 <input
                   type="text"
@@ -215,7 +215,7 @@ export default function Products() {
                 </span>
               </div>
             </div>
-            <div className="grid-col-2">
+            <div className="flex-1">
               <select
                 className="w-40 h-12 border border-black bg-white text-black rounded-md px-2 
                hover:bg-black hover:text-white transition duration-300 cursor-pointer"
@@ -276,6 +276,21 @@ export default function Products() {
                   aspect="aspect-[1/1]"
                 />
               ))}
+            </div>
+            <div className="flex flex-wrap gap-8 justify-center items-center font-semibold font-medium">
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
+                &larr;
+              </button>
+              Page 1 of 1
+              <button
+                className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black border rounded-md 
+                   hover:bg-black hover:text-white transition duration-300"
+              >
+                &rarr;
+              </button>
             </div>
           </div>
         </div>
