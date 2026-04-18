@@ -2,12 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Cart = require('../models/Cart')
 const Product = require('../models/Product')
-const product = require('../middleware/authMiddleware')
-const Cart = require('../models/Cart')
+const protect = require('../middleware/authMiddleware')
 
 router.get('/', protect, async (req, res) => {
     try {
-        const Cart = await Cart.findOne({ user: req.user._id }).populate('items.product')
+        const cart = await Cart.findOne({ user: req.user._id }).populate('items.product')
         if(!cart) {
             return res.json({ items: [] })
         }
@@ -42,7 +41,7 @@ router.post('/add', protect, async (req, res) => {
                 item => item.product.toString() === productId && item.size === size
             )
 
-            if(existingItems) {
+            if(existingItem) {
                 existingItem.quantity += quantity
             } else {
                 cart.items.push({ product: productId, quantity, size })
