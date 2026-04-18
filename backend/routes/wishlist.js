@@ -16,6 +16,7 @@ router.get('/', protect, async (req, res) => {
 })
 
 router.post('/add', protect, async (req, res) => {
+    const { productId } = req.body
     try {
         let wishlist = await Wishlist.findOne({ user: req.user._id })
         if(!wishlist) {
