@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth')
 const productRoutes = require('./routes/products')
 const cartRoutes = require('./routes/cart')
 const wishlistRoutes = require('./routes/wishlist')
+const orderRoutes = require('./routes/orders')
 
 const app = express()
 
@@ -21,6 +22,8 @@ app.use('/api/products', productRoutes)
 app.use('/api/cart', cartRoutes)
 
 app.use('/api/wishlist', wishlistRoutes)
+
+app.use('/api/orders', orderRoutes)
 
 app.get('/', (req, res) => {
     res.send('API is running...')
