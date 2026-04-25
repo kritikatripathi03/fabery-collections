@@ -11,7 +11,7 @@ const products = [
     price: 499,
     category: 'men',
     sizes: ['S', 'M', 'L', 'XL'],
-    images: ['https://via.placeholder.com/500x500?text=White+T-Shirt'],
+    images: ['https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500'],
     stock: 50
   },
   {
@@ -20,7 +20,7 @@ const products = [
     price: 1299,
     category: 'men',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    images: ['https://via.placeholder.com/500x500?text=Slim+Fit+Jeans'],
+    images: ['https://images.unsplash.com/photo-1542272604-787c3835535d?w=500'],
     stock: 30
   },
   {
@@ -29,7 +29,7 @@ const products = [
     price: 999,
     category: 'women',
     sizes: ['XS', 'S', 'M', 'L'],
-    images: ['https://via.placeholder.com/500x500?text=Floral+Dress'],
+    images: ['https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500'],
     stock: 25
   },
   {
@@ -38,7 +38,7 @@ const products = [
     price: 1099,
     category: 'women',
     sizes: ['S', 'M', 'L', 'XL'],
-    images: ['https://via.placeholder.com/500x500?text=Women+Hoodie'],
+    images: ['https://images.unsplash.com/photo-1509942774463-acf339cf87d5?w=500'],
     stock: 40
   },
   {
@@ -47,7 +47,7 @@ const products = [
     price: 349,
     category: 'kids',
     sizes: ['XS', 'S', 'M'],
-    images: ['https://via.placeholder.com/500x500?text=Kids+T-Shirt'],
+    images: ['https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=500'],
     stock: 60
   },
   {
@@ -56,7 +56,7 @@ const products = [
     price: 599,
     category: 'kids',
     sizes: ['XS', 'S', 'M'],
-    images: ['https://via.placeholder.com/500x500?text=Kids+Shorts'],
+    images: ['https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=500'],
     stock: 35
   },
   {
@@ -65,7 +65,7 @@ const products = [
     price: 449,
     category: 'accessories',
     sizes: [],
-    images: ['https://via.placeholder.com/500x500?text=Leather+Belt'],
+    images: ['https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500'],
     stock: 80
   },
   {
@@ -74,7 +74,7 @@ const products = [
     price: 299,
     category: 'accessories',
     sizes: [],
-    images: ['https://via.placeholder.com/500x500?text=Tote+Bag'],
+    images: ['https://images.unsplash.com/photo-1544816155-12df9643f363?w=500'],
     stock: 100
   }
 ]
