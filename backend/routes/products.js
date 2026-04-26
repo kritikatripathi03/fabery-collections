@@ -12,6 +12,16 @@ router.get('/', async(req, res) => {
     }
 })
 
+// Get products by category
+router.get('/category/:category', async (req, res) => {
+    try {
+        const products = await Product.find({ category: req.params.category })
+        res.json(products)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
 //Get single product
 router.get('/:id', async(req, res) => {
     try {
@@ -20,16 +30,6 @@ router.get('/:id', async(req, res) => {
             return res.status(400).json({ message: 'Product not found' })
         }
         res.json(product)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-})
-
-// Get products by category
-router.get('/category/:category', async (req, res) => {
-    try {
-        const products = await Product.find({ category: req.params.category })
-        res.json(products)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
