@@ -5,7 +5,7 @@ const protect = require('../middleware/authMiddleware')
 
 router.get('/', protect, async (req, res) => {
     try {
-        const wishlist = await Wishlist.findOne({ user: req.user._id }).populate('items.poduct')
+        const wishlist = await Wishlist.findOne({ user: req.user._id }).populate('items.product')
         if(!wishlist) {
             return res.json({ items: [] })
         }
