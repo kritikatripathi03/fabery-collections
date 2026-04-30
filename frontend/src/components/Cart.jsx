@@ -1,10 +1,8 @@
 import axios from "../api/axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 
 export default function Cart() {
-    const { user } = useAuth();
     const navigate = useNavigate();
     const [cart, setCart] = useState([]);
     const [error, setError] = useState("");

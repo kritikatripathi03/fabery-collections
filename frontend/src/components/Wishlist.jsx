@@ -1,11 +1,9 @@
 import ProductCard from "./ProductCard";
-import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "../api/axios";
 
 export default function Wishlist() {
-  const { user } = useAuth();
   const navigate = useNavigate();
   const [wishlist, setWishlist] = useState([]);
   const [error, setError] = useState("");
