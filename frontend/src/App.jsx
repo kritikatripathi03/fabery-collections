@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Checkout from "./components/Checkout";
 
 export default function App() {
   return (
@@ -52,7 +53,17 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+          <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+      
       </Routes>
+      
       <Footer></Footer>
     </Router>
   );
