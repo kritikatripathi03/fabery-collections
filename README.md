@@ -214,7 +214,7 @@ Visit `http://localhost:5173` in your browser.
 
 ## 👨‍💻 Author
 
-Built with ❤️ by [Your Name](https://github.com/your-username)
+Built with ❤️ by [Your Name](https://github.com/kritikatripathi03)
 
 ---
 
