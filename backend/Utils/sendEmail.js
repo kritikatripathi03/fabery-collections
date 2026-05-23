@@ -1,27 +1,21 @@
-const nodemailer = require('nodemailer')
+const { Resend } = require('resend')
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-})
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 const sendOrderConfirmation = async (toEmail, order, userName) => {
-    const itemList = order.items.map(item => `
-        <tr>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${item.product?.name || 'Product'}</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${item.size}</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">${item.quantity}</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee;">₹${item.price * item.quantity}</td>
-        </tr>
-    `).join('')
+  const itemsList = order.items.map(item => `
+    <tr>
+      <td style="padding: 8px; border-bottom: 1px solid #eee;">${item.product?.name || 'Product'}</td>
+      <td style="padding: 8px; border-bottom: 1px solid #eee;">${item.size}</td>
+      <td style="padding: 8px; border-bottom: 1px solid #eee;">${item.quantity}</td>
+      <td style="padding: 8px; border-bottom: 1px solid #eee;">₹${item.price * item.quantity}</td>
+    </tr>
+  `).join('')
 
-    const mailOptions = {
-    from: `"FÄBERY Collections" <${process.env.EMAIL_USER}>`,
+  await resend.emails.send({
+    from: 'FÄBERY Collections <onboarding@resend.dev>',
     to: toEmail,
-    subject: `Order Confirmed — FÄBERY Collections`,
+    subject: 'Order Confirmed — FÄBERY Collections',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         
@@ -49,7 +43,7 @@ const sendOrderConfirmation = async (toEmail, order, userName) => {
             </tr>
           </thead>
           <tbody>
-            ${itemList}
+            ${itemsList}
           </tbody>
         </table>
 
@@ -75,8 +69,7 @@ const sendOrderConfirmation = async (toEmail, order, userName) => {
         </p>
       </div>
     `
-    }
-    await transporter.sendMail(mailOptions)
+  })
 }
 
 module.exports = sendOrderConfirmation
