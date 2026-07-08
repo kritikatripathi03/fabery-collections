@@ -7,6 +7,7 @@ const productRoutes = require('./routes/products')
 const cartRoutes = require('./routes/cart')
 const wishlistRoutes = require('./routes/wishlist')
 const orderRoutes = require('./routes/orders')
+const adminRoutes = require('./routes/admin')
 
 const app = express()
 
@@ -28,6 +29,8 @@ app.use('/api/orders', orderRoutes)
 app.get('/', (req, res) => {
     res.send('API is running...')
 })
+
+app.use('/api/admin', adminRoutes)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
