@@ -16,13 +16,13 @@ router.get('/products', protect, admin, async (req, res) => {
     }
 })
 
-router.post('products', protect, admin, upload.single('image'), async (req, res) => {
+router.post('/products', protect, admin, upload.single('image'), async (req, res) => {
     try {
         const { name, description, price, category, sizes, stock } = req.body
 
         const product = await Product.create({
             name, 
-            desciption,
+            description,
             price,
             category,
             sizes: sizes ? sizes.split(',').map(s => s.trim()) : [],
@@ -65,7 +65,7 @@ router.put('/products/:id', protect, admin, upload.single('image'), async (req, 
     }
 })
 
-router.delete('products/:id', protect, admin, async (req, res) => {
+router.delete('/products/:id', protect, admin, async (req, res) => {
     try {
         const product = await Product.findById(req.params.id)
 
