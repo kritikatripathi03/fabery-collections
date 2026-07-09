@@ -13,6 +13,11 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Checkout from "./components/Checkout";
+import AdminRoute from "./components/AdminRoute";
+import AdminDashboard from "./components/admin/AdminDashboard"
+import AdminProducts from "./components/admin/AdminProducts"
+import AdminOrders from "./components/admin/AdminOrders"
+import AdminUsers from "./components/admin/AdminUsers"
 
 export default function App() {
   return (
@@ -61,7 +66,13 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-      
+
+        {/*Admin Routes*/}
+        <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+        <Route path="/admin/products" element={<AdminRoute><AdminProducts /></AdminRoute>} />
+        <Route path="/admin/orders" element={<AdminRoute><AdminOrders /></AdminRoute>} />
+        <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
+              
       </Routes>
       
       <Footer></Footer>

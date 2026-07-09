@@ -91,6 +91,14 @@ export default function Navbar() {
                   >
                     My Profile
                   </Link>
+                  {user.isAdmin && (
+                    <Link
+                      to="/admin"
+                      className="block px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-lg font-medium"
+                    >
+                      Admin Dashboard
+                    </Link>
+                  )}
                   <button
                     onClick={handleLogout}
                     className="w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg"
