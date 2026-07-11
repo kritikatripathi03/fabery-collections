@@ -67,7 +67,7 @@ router.post('/verify', protect, async (req, res) => {
         )
 
         const order = await Order.create({
-            user: rrq.user._id,
+            user: req.user._id,
             items: orderItems,
             shippingAddress,
             totalAmount,
@@ -82,7 +82,7 @@ router.post('/verify', protect, async (req, res) => {
         try {
             const user = await User.findById(req.user._id)
             await sendOrderConfirmation(user.email, order, user.name)
-        } catch (emaiError) {
+        } catch (emailError) {
             console.error('Email failed:', emailError.message)
         }
 

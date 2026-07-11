@@ -36,11 +36,78 @@ export default function Checkout() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const loadRazorpayScript = () =>
+    new Promise((resolve) => {
+      if (window.Razorpay) return resolve(true);
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+
+  const handleOnlinePayment = async () => {
+    const loaded = await loadRazorpayScript();
+    if (!loaded) {
+      setError("Failed to load Razorpay. Check your connection and try again.");
+      return;
+    }
+
+    // Create an order on the backend
+    const { data: order } = await axios.post("/payment/create-order", {
+      amount: total,
+    });
+
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: "Shopping App",
+      description: "Order Payment",
+      order_id: order.id,
+      prefill: {
+        name: form.fullName,
+        contact: form.phone,
+      },
+      theme: { color: "#000000" },
+      handler: async (response) => {
+        try {
+          await axios.post("/payment/verify", {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            shippingAddress: form,
+          });
+          navigate("/profile");
+        } catch (err) {
+          setError(err.response?.data?.message || "Payment verification failed");
+          setOrderLoading(false);
+        }
+      },
+      modal: {
+        ondismiss: () => setOrderLoading(false),
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.on("payment.failed", (response) => {
+      setError(response.error?.description || "Payment failed");
+      setOrderLoading(false);
+    });
+    rzp.open();
+  };
+
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
     setOrderLoading(true);
     setError("");
     try {
+      if (paymentMethod === "online") {
+        await handleOnlinePayment();
+        // orderLoading is cleared by the Razorpay handler / dismiss callbacks
+        return;
+      }
+
       await axios.post("/orders", {
         shippingAddress: form,
         paymentMethod,
@@ -48,7 +115,6 @@ export default function Checkout() {
       navigate("/profile");
     } catch (err) {
       setError(err.response?.data?.message || "Failed to place order");
-    } finally {
       setOrderLoading(false);
     }
   };
@@ -198,7 +264,7 @@ export default function Checkout() {
                   />
                   <div>
                     <p className="text-sm font-medium">Online Payment</p>
-                    <p className="text-xs text-gray-400">Razorpay — coming soon</p>
+                    <p className="text-xs text-gray-400">Pay securely via Razorpay</p>
                   </div>
                 </label>
               </div>
@@ -215,7 +281,11 @@ export default function Checkout() {
               disabled={orderLoading}
               className="w-full bg-black text-white py-4 rounded-full text-sm font-medium hover:bg-gray-900 transition disabled:opacity-50"
             >
-              {orderLoading ? "Placing Order..." : "Place Order"}
+              {orderLoading
+                ? "Processing..."
+                : paymentMethod === "online"
+                ? `Pay ₹${total}`
+                : "Place Order"}
             </button>
           </form>
         </div>
