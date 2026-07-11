@@ -8,6 +8,7 @@ const cartRoutes = require('./routes/cart')
 const wishlistRoutes = require('./routes/wishlist')
 const orderRoutes = require('./routes/orders')
 const adminRoutes = require('./routes/admin')
+const paymentRoutes = require('./routes/payments')
 
 const app = express()
 
@@ -31,6 +32,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/admin', adminRoutes)
+
+app.use('/api/payment', paymentRoutes)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
