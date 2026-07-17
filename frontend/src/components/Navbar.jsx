@@ -28,7 +28,6 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-transparent mt-4 px-4 py-4">
       <div className="flex items-center justify-between px-4">
-
         {/* Desktop nav links */}
         <div className="hidden lg:flex gap-6 text-xl">
           {navLinks.map((link) => (
@@ -78,33 +77,38 @@ export default function Navbar() {
                 </div>
               </Link>
 
-              <div className="relative group">
-                <img className="h-12 w-12 cursor-pointer" src={profilePic} alt="Profile" />
-                {/* Dropdown */}
-                <div className="absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg p-2 hidden group-hover:block z-50">
-                  <p className="px-3 py-2 text-sm font-medium text-gray-700 border-b border-gray-100">
-                    {user.name}
-                  </p>
-                  <Link
-                    to="/profile"
-                    className="block px-3 py-2 text-sm hover:bg-gray-50 rounded-lg"
-                  >
-                    My Profile
-                  </Link>
-                  {user.isAdmin && (
+              <div className="relative group inline-flex flex-col items-end">
+                <img
+                  className="h-12 w-12 cursor-pointer"
+                  src={profilePic}
+                  alt="Profile"
+                />
+                <div className="absolute top-full right-0 pt-2 hidden group-hover:block z-50">
+                  <div className="w-44 bg-white rounded-xl shadow-lg p-2">
+                    <p className="px-3 py-2 text-sm font-medium text-gray-700 border-b border-gray-100">
+                      {user.name}
+                    </p>
                     <Link
-                      to="/admin"
-                      className="block px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-lg font-medium"
+                      to="/profile"
+                      className="block px-3 py-2 text-sm hover:bg-gray-50 rounded-lg"
                     >
-                      Admin Dashboard
+                      My Profile
                     </Link>
-                  )}
-                  <button
-                    onClick={handleLogout}
-                    className="w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg"
-                  >
-                    Logout
-                  </button>
+                    {user.isAdmin && (
+                      <Link
+                        to="/admin"
+                        className="block px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-lg font-medium"
+                      >
+                        Admin Dashboard
+                      </Link>
+                    )}
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg"
+                    >
+                      Logout
+                    </button>
+                  </div>
                 </div>
               </div>
             </>
@@ -135,13 +139,42 @@ export default function Navbar() {
             ))}
             {user ? (
               <>
-                <Link to="/cart" onClick={closeMenu} className="font-bold hover:font-extrabold">Cart</Link>
-                <Link to="/wishlist" onClick={closeMenu} className="font-bold hover:font-extrabold">Wishlist</Link>
-                <Link to="/profile" onClick={closeMenu} className="font-bold hover:font-extrabold">Profile</Link>
-                <button onClick={handleLogout} className="text-left text-red-500 font-bold">Logout</button>
+                <Link
+                  to="/cart"
+                  onClick={closeMenu}
+                  className="font-bold hover:font-extrabold"
+                >
+                  Cart
+                </Link>
+                <Link
+                  to="/wishlist"
+                  onClick={closeMenu}
+                  className="font-bold hover:font-extrabold"
+                >
+                  Wishlist
+                </Link>
+                <Link
+                  to="/profile"
+                  onClick={closeMenu}
+                  className="font-bold hover:font-extrabold"
+                >
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="text-left text-red-500 font-bold"
+                >
+                  Logout
+                </button>
               </>
             ) : (
-              <Link to="/login" onClick={closeMenu} className="font-bold hover:font-extrabold">Sign in</Link>
+              <Link
+                to="/login"
+                onClick={closeMenu}
+                className="font-bold hover:font-extrabold"
+              >
+                Sign in
+              </Link>
             )}
           </div>
         </div>
