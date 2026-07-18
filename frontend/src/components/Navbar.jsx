@@ -43,7 +43,7 @@ export default function Navbar() {
         </button>
 
         {/* Logo */}
-        <Link to="/" onClick={closeMenu}>
+        <Link to="/about" onClick={closeMenu}>
           <div className="flex items-center gap-4">
             <img className="h-16 w-16" src={logoSmall} alt="FABERY" />
             <img
