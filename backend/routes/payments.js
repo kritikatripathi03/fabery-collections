@@ -6,7 +6,7 @@ const protect = require('../middleware/authMiddleware')
 const Order = require('../models/Order')
 const Cart =  require('../models/Cart')
 const User = require('../models/User')
-const sendOrderConfirmation = require('../utils/sendEmail')
+const sendOrderConfirmation = require('../Utils/sendEmail')
 
 const razorpay = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
