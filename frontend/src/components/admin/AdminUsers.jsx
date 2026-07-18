@@ -13,7 +13,7 @@ export default function AdminUsers() {
       try {
         const { data } = await axios.get("/admin/users");
         setUsers(data);
-      } catch (err) {
+      } catch {
         setError("Failed to load users");
       } finally {
         setLoading(false);
@@ -27,62 +27,63 @@ export default function AdminUsers() {
     try {
       await axios.delete(`/admin/users/${id}`);
       setUsers(users.filter(u => u._id !== id));
-    } catch (err) {
-      setError(err.response?.data?.message || "Failed to delete user");
+    } catch {
+      setError("Failed to delete user");
     }
   };
 
   if (loading) return (
-    <div className="flex justify-center items-center min-h-screen text-gray-500">
+    <div className="flex min-h-[60vh] items-center justify-center text-stone-500">
       Loading users...
     </div>
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
-      <div className="mb-10">
-        <h1 className="text-4xl font-extrabold">Users</h1>
-        <p className="text-gray-500 mt-1">{users.length} users total</p>
+    <div className="py-6 lg:py-10">
+      <div className="surface-card rounded-[2rem] px-6 py-6 sm:px-8 lg:px-10">
+        <p className="section-kicker">Admin Users</p>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-stone-950">Users</h1>
+        <p className="mt-2 text-sm text-stone-500">{users.length} users total</p>
       </div>
 
       {error && (
-        <div className="mb-6 px-4 py-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl">
+        <div className="mb-6 mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
           {error}
         </div>
       )}
 
-      <div className="border border-gray-200 rounded-2xl overflow-hidden">
+      <div className="surface-card mt-6 overflow-hidden rounded-[2rem]">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">User</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Email</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Role</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Joined</th>
-              <th className="text-left py-4 px-4 text-gray-400 font-medium">Actions</th>
+            <tr className="border-b border-stone-200 bg-white/60 text-stone-500">
+              <th className="py-4 px-4 text-left font-medium">User</th>
+              <th className="py-4 px-4 text-left font-medium">Email</th>
+              <th className="py-4 px-4 text-left font-medium">Role</th>
+              <th className="py-4 px-4 text-left font-medium">Joined</th>
+              <th className="py-4 px-4 text-left font-medium">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.length === 0 ? (
               <tr>
-                <td colSpan="5" className="text-center py-8 text-gray-400">
+                <td colSpan="5" className="py-8 text-center text-stone-400">
                   No users found
                 </td>
               </tr>
             ) : (
               users.map((user) => (
-                <tr key={user._id} className="border-b border-gray-100 hover:bg-gray-50">
+                <tr key={user._id} className="border-b border-stone-100 transition hover:bg-stone-50/80">
                   <td className="py-4 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center text-sm font-bold">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-950 text-sm font-semibold text-white">
                         {user.name.charAt(0).toUpperCase()}
                       </div>
-                      <p className="font-medium">{user.name}</p>
+                      <p className="font-medium text-stone-950">{user.name}</p>
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-gray-500">{user.email}</td>
+                  <td className="py-4 px-4 text-stone-500">{user.email}</td>
                   <td className="py-4 px-4">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    <span className={`rounded-full px-2 py-1 text-xs font-medium ${
                       user.isAdmin
                         ? "bg-black text-white"
                         : "bg-gray-100 text-gray-600"
@@ -90,7 +91,7 @@ export default function AdminUsers() {
                       {user.isAdmin ? "Admin" : "Customer"}
                     </span>
                   </td>
-                  <td className="py-4 px-4 text-gray-500">
+                  <td className="py-4 px-4 text-stone-500">
                     {new Date(user.createdAt).toLocaleDateString("en-IN", {
                       year: "numeric",
                       month: "short",
@@ -99,13 +100,13 @@ export default function AdminUsers() {
                   </td>
                   <td className="py-4 px-4">
                     {user._id === currentUser._id ? (
-                      <span className="text-xs text-gray-400">You</span>
+                      <span className="text-xs text-stone-400">You</span>
                     ) : user.isAdmin ? (
-                      <span className="text-xs text-gray-400">Protected</span>
+                      <span className="text-xs text-stone-400">Protected</span>
                     ) : (
                       <button
                         onClick={() => handleDelete(user._id)}
-                        className="text-sm text-red-400 underline hover:text-red-600 transition"
+                        className="text-sm font-medium text-red-600 underline underline-offset-4 transition hover:text-red-700"
                       >
                         Delete
                       </button>

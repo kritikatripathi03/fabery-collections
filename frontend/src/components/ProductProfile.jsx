@@ -24,7 +24,7 @@ export default function ProductProfile() {
         const { data } = await axios.get(`/products/${id}`);
         setProduct(data);
         setSelectedImage(data.images[0]);
-      } catch (err) {
+      } catch {
         setError("Product not found");
       } finally {
         setLoading(false);
@@ -47,8 +47,8 @@ export default function ProductProfile() {
         size: selectedSize || "one-size"
       });
       setCartMessage("Added to cart!");
-    } catch (err) {
-      setCartMessage(err.response?.data?.message || "Failed to add to cart");
+    } catch {
+      setCartMessage("Failed to add to cart");
     } finally {
       setCartLoading(false)
     }
@@ -61,8 +61,8 @@ export default function ProductProfile() {
     try {
       await axios.post("/wishlist/add", { productId: product._id });
       setWishlistMessage("Added to wishlist!");
-    } catch (err) {
-      setWishlistMessage(err.response?.data?.message || "Failed to add to wishlist");
+    } catch {
+      setWishlistMessage("Failed to add to wishlist");
     } finally {
       setWishlistLoading(false);
     }
@@ -83,65 +83,68 @@ export default function ProductProfile() {
   if (!product) return null; 
 
   return (
-    <div className="overflow-hidden flex justify-center items-center">
-      <div className="flex gap-20 px-6 py-4 w-full max-w-6xl">
+    <div className="py-6 lg:py-10">
+      <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
 
         {/* LEFT SECTION */}
-        <div className="flex gap-4 min-h-0">
+        <div className="surface-card rounded-[2rem] p-4 sm:p-6">
+          <div className="flex gap-4 min-h-0">
           {/* THUMBNAILS */}
-          <div className="flex flex-col gap-3 overflow-y-auto max-h-[70vh]">
-            {product.images.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt=""
-                onClick={() => setSelectedImage(img)}
-                className={`w-16 cursor-pointer border ${
-                  selectedImage === img ? "border-black" : "border-gray-200"
-                }`}
-              />
-            ))}
-          </div>
+            <div className="flex max-h-[70vh] flex-col gap-3 overflow-y-auto pr-1">
+              {product.images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt=""
+                  onClick={() => setSelectedImage(img)}
+                  className={`w-16 cursor-pointer rounded-xl border object-cover transition hover:opacity-90 ${
+                    selectedImage === img ? "border-stone-950" : "border-stone-200"
+                  }`}
+                />
+              ))}
+            </div>
 
           {/* MAIN IMAGE */}
-          <div className="w-[400px] h-[500px] flex items-center justify-center">
-            <img
-              src={selectedImage}
-              alt={product.name}
-              className="max-h-full max-w-full object-contain"
-            />
+            <div className="flex min-h-[32rem] flex-1 items-center justify-center rounded-[1.75rem] bg-white/70 p-4">
+              <img
+                src={selectedImage}
+                alt={product.name}
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
           </div>
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="max-w-md space-y-4 overflow-y-auto min-h-0">
-          <p className="text-xs text-gray-400 uppercase tracking-widest capitalize">
+        <div className="surface-card rounded-[2rem] p-6 sm:p-8">
+          <div className="space-y-5 overflow-y-auto min-h-0">
+          <p className="section-kicker capitalize">
             {product.category}
           </p>
 
-          <h2 className="text-2xl font-bold tracking-wide">
+          <h2 className="text-3xl font-semibold tracking-tight text-stone-950">
             {product.name}
           </h2>
 
-          <p className="text-xl font-semibold">₹{product.price}</p>
+          <p className="text-2xl font-semibold text-stone-950">₹{product.price}</p>
 
-          <p className="text-sm text-gray-500">MRP incl. of all taxes</p>
+          <p className="text-sm text-stone-500">MRP incl. of all taxes</p>
 
-          <p className="text-sm text-gray-700">{product.description}</p>
+          <p className="text-sm leading-7 text-stone-600">{product.description}</p>
 
           {/* SIZES */}
           {product.sizes.length > 0 && (
             <div>
-              <p className="text-sm mb-2 font-medium">Size</p>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-stone-700">Size</p>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`px-3 py-1 border text-sm transition ${
+                    className={`chip px-4 py-2 text-sm ${
                       selectedSize === size
-                        ? "border-black bg-black text-white"
-                        : "border-gray-300 hover:border-black"
+                        ? "chip-active"
+                        : ""
                     }`}
                   >
                     {size}
@@ -152,20 +155,20 @@ export default function ProductProfile() {
           )}
 
           {/* Stock info */}
-          <p className={`text-sm ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}>
+          <p className={`text-sm font-medium ${product.stock > 0 ? "text-emerald-700" : "text-red-600"}`}>
             {product.stock > 0 ? `In stock (${product.stock} left)` : "Out of stock"}
           </p>
 
           {/* Cart message */}
           {cartMessage && (
-            <p className={`text-sm ${cartMessage.includes("Added") ? "text-green-600" : "text-red-500"}`}>
+            <p className={`text-sm ${cartMessage.includes("Added") ? "text-emerald-700" : "text-red-600"}`}>
               {cartMessage}
             </p>
           )}
 
           {/* Wishlist message */}
           {wishlistMessage && (
-            <p className={`text-sm ${wishlistMessage.includes("Added") ? "text-green-600" : "text-red-500"}`}>
+            <p className={`text-sm ${wishlistMessage.includes("Added") ? "text-emerald-700" : "text-red-600"}`}>
               {wishlistMessage}
             </p>
           )}
@@ -176,8 +179,8 @@ export default function ProductProfile() {
             disabled={cartLoading || product.stock === 0}
             className={`w-full py-3 mt-2 font-medium transition ${
               product.stock === 0
-                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "bg-black text-white hover:bg-gray-900"
+                ? "cursor-not-allowed bg-stone-100 text-stone-400"
+                : "btn-primary"
             } disabled:opacity-50`}
           >
             {cartLoading ? "Adding..." : "Add to Cart"}
@@ -187,10 +190,11 @@ export default function ProductProfile() {
           <button
             onClick={handleAddToWishlist}
             disabled={wishlistLoading}
-            className="w-full py-3 border border-black text-black font-medium hover:bg-black hover:text-white transition disabled:opacity-50"
+            className="btn-secondary w-full py-3 font-medium disabled:opacity-50"
           >
             {wishlistLoading ? "Adding..." : "Add to Wishlist"}
           </button>
+          </div>
         </div>
       </div>
     </div>

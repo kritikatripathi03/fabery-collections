@@ -51,51 +51,61 @@ export default function AdminDashboard() {
   };
 
   if (loading) return (
-    <div className="flex justify-center items-center min-h-screen text-gray-500">
+    <div className="flex min-h-[60vh] items-center justify-center text-stone-500">
       Loading dashboard...
     </div>
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
-      <h1 className="text-4xl font-extrabold mb-2">Admin Dashboard</h1>
-      <p className="text-gray-500 mb-10">Welcome back! Here's what's happening.</p>
+    <div className="py-6 lg:py-10">
+      <div className="surface-card rounded-[2rem] px-6 py-6 sm:px-8 lg:px-10">
+        <p className="section-kicker">Admin</p>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+          Admin Dashboard
+        </h1>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-stone-500 sm:text-base">
+          Welcome back. Here’s a quick look at the store’s current activity.
+        </p>
+      </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        <div className="border border-gray-200 rounded-2xl p-6">
-          <p className="text-sm text-gray-400 mb-1">Total Products</p>
-          <p className="text-3xl font-extrabold">{stats.totalProducts}</p>
-          <Link to="/admin/products" className="text-sm text-black underline mt-2 block">
+      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="surface-card rounded-[2rem] p-6">
+          <p className="section-kicker">Total Products</p>
+          <p className="mt-4 text-4xl font-semibold tracking-tight text-stone-950">{stats.totalProducts}</p>
+          <Link to="/admin/products" className="mt-3 inline-block text-sm font-medium text-stone-950 underline underline-offset-4">
             Manage →
           </Link>
         </div>
-        <div className="border border-gray-200 rounded-2xl p-6">
-          <p className="text-sm text-gray-400 mb-1">Total Orders</p>
-          <p className="text-3xl font-extrabold">{stats.totalOrders}</p>
-          <Link to="/admin/orders" className="text-sm text-black underline mt-2 block">
+        <div className="surface-card rounded-[2rem] p-6">
+          <p className="section-kicker">Total Orders</p>
+          <p className="mt-4 text-4xl font-semibold tracking-tight text-stone-950">{stats.totalOrders}</p>
+          <Link to="/admin/orders" className="mt-3 inline-block text-sm font-medium text-stone-950 underline underline-offset-4">
             Manage →
           </Link>
         </div>
-        <div className="border border-gray-200 rounded-2xl p-6">
-          <p className="text-sm text-gray-400 mb-1">Total Users</p>
-          <p className="text-3xl font-extrabold">{stats.totalUsers}</p>
-          <Link to="/admin/users" className="text-sm text-black underline mt-2 block">
+        <div className="surface-card rounded-[2rem] p-6">
+          <p className="section-kicker">Total Users</p>
+          <p className="mt-4 text-4xl font-semibold tracking-tight text-stone-950">{stats.totalUsers}</p>
+          <Link to="/admin/users" className="mt-3 inline-block text-sm font-medium text-stone-950 underline underline-offset-4">
             Manage →
           </Link>
         </div>
-        <div className="border border-gray-200 rounded-2xl p-6">
-          <p className="text-sm text-gray-400 mb-1">Total Revenue</p>
-          <p className="text-3xl font-extrabold">₹{stats.totalRevenue}</p>
-          <p className="text-sm text-gray-400 mt-2">All time</p>
+        <div className="surface-card rounded-[2rem] p-6">
+          <p className="section-kicker">Total Revenue</p>
+          <p className="mt-4 text-4xl font-semibold tracking-tight text-stone-950">₹{stats.totalRevenue}</p>
+          <p className="mt-3 text-sm text-stone-500">All time</p>
         </div>
       </div>
 
       {/* Recent Orders */}
-      <div className="border border-gray-200 rounded-2xl p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold">Recent Orders</h2>
-          <Link to="/admin/orders" className="text-sm text-black underline">
+      <div className="surface-card rounded-[2rem] p-6 mt-6">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-stone-950">Recent Orders</h2>
+            <p className="mt-1 text-sm text-stone-500">Latest activity across the store.</p>
+          </div>
+          <Link to="/admin/orders" className="text-sm font-medium text-stone-950 underline underline-offset-4">
             View all →
           </Link>
         </div>
@@ -103,38 +113,38 @@ export default function AdminDashboard() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-100">
-                <th className="text-left py-3 px-2 text-gray-400 font-medium">Order ID</th>
-                <th className="text-left py-3 px-2 text-gray-400 font-medium">Customer</th>
-                <th className="text-left py-3 px-2 text-gray-400 font-medium">Date</th>
-                <th className="text-left py-3 px-2 text-gray-400 font-medium">Total</th>
-                <th className="text-left py-3 px-2 text-gray-400 font-medium">Status</th>
+              <tr className="border-b border-stone-200 text-stone-500">
+                <th className="py-3 px-2 text-left font-medium">Order ID</th>
+                <th className="py-3 px-2 text-left font-medium">Customer</th>
+                <th className="py-3 px-2 text-left font-medium">Date</th>
+                <th className="py-3 px-2 text-left font-medium">Total</th>
+                <th className="py-3 px-2 text-left font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
               {recentOrders.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="text-center py-8 text-gray-400">
+                  <td colSpan="5" className="py-8 text-center text-stone-400">
                     No orders yet
                   </td>
                 </tr>
               ) : (
                 recentOrders.map((order) => (
-                  <tr key={order._id} className="border-b border-gray-50 hover:bg-gray-50">
-                    <td className="py-3 px-2 font-mono text-xs">
+                  <tr key={order._id} className="border-b border-stone-100 transition hover:bg-stone-50/80">
+                    <td className="py-3 px-2 font-mono text-xs text-stone-700">
                       {order._id.slice(-8).toUpperCase()}
                     </td>
-                    <td className="py-3 px-2">
+                    <td className="py-3 px-2 text-stone-900">
                       {order.user?.name || "Deleted User"}
                     </td>
-                    <td className="py-3 px-2 text-gray-500">
+                    <td className="py-3 px-2 text-stone-500">
                       {new Date(order.createdAt).toLocaleDateString("en-IN")}
                     </td>
-                    <td className="py-3 px-2 font-semibold">
+                    <td className="py-3 px-2 font-semibold text-stone-950">
                       ₹{order.totalAmount}
                     </td>
                     <td className="py-3 px-2">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${statusColors[order.status]}`}>
+                      <span className={`rounded-full px-2 py-1 text-xs font-medium capitalize ${statusColors[order.status]}`}>
                         {order.status}
                       </span>
                     </td>
@@ -147,22 +157,22 @@ export default function AdminDashboard() {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Link
           to="/admin/products"
-          className="border border-black text-black px-6 py-4 rounded-2xl font-medium hover:bg-black hover:text-white transition text-center"
+          className="btn-primary px-6 py-4 text-center"
         >
           + Add New Product
         </Link>
         <Link
           to="/admin/orders"
-          className="border border-black text-black px-6 py-4 rounded-2xl font-medium hover:bg-black hover:text-white transition text-center"
+          className="btn-secondary px-6 py-4 text-center"
         >
           View All Orders
         </Link>
         <Link
           to="/admin/users"
-          className="border border-black text-black px-6 py-4 rounded-2xl font-medium hover:bg-black hover:text-white transition text-center"
+          className="btn-secondary px-6 py-4 text-center"
         >
           Manage Users
         </Link>

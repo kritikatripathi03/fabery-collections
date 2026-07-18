@@ -5,31 +5,19 @@ import img4 from "../assets/gal-4.jpg"
 
 export default function ImageGallery() {
   return (
-    <div className="w-full flex justify-between items-start gap-10 px-4 py-20">
-      {/* Image 1 */}
-      <div className="flex-1">
-        <div className="aspect-[3/4] overflow-hidden">
-          <img src={img1} className="w-full object-cover" />
+    <div className="section-shell pb-8 lg:pb-10">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="overflow-hidden rounded-[2rem] aspect-[3/4]">
+          <img src={img1} className="h-full w-full object-cover" alt="Gallery look 1" />
         </div>
-      </div>
-
-      {/* Image 2 (shift down) */}
-      <div className="flex-1 mt-20">
-        <div className="aspect-[3/4] overflow-hidden">
-          <img src={img2} className="w-full object-cover" />
+        <div className="overflow-hidden rounded-[2rem] aspect-[3/4] sm:mt-6">
+          <img src={img2} className="h-full w-full object-cover" alt="Gallery look 2" />
         </div>
-      </div>
-      {/* Image 3 */}
-      <div className="flex-1">
-        <div className="aspect-[3/4] overflow-hidden">
-          <img src={img3} className="w-full object-cover" />
+        <div className="overflow-hidden rounded-[2rem] aspect-[3/4]">
+          <img src={img3} className="h-full w-full object-cover" alt="Gallery look 3" />
         </div>
-      </div>
-
-      {/* Image 4 (shift down) */}
-      <div className="flex-1 mt-20">
-        <div className="aspect-[3/4] overflow-hidden">
-          <img src={img4} className="w-full object-cover" />
+        <div className="overflow-hidden rounded-[2rem] aspect-[3/4] sm:mt-6">
+          <img src={img4} className="h-full w-full object-cover" alt="Gallery look 4" />
         </div>
       </div>
     </div>

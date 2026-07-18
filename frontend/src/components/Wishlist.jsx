@@ -14,7 +14,7 @@ export default function Wishlist() {
       try {
         const { data } = await axios.get("/wishlist");
         setWishlist(data.items || []);
-      } catch (err) {
+      } catch {
         setError("Failed to load Wishlist!");
       } finally {
         setLoading(false);
@@ -27,32 +27,32 @@ export default function Wishlist() {
     try {
       const { data } = await axios.delete(`/wishlist/remove/${itemId}`);
       setWishlist(data.items || []);
-    } catch (err) {
+    } catch {
       setError("Failed to remove item!");
     }
   };
 
   if (loading)
     return (
-      <div className="flex justify-center items-center min-h-screen text-gray-500">
+      <div className="flex min-h-[60vh] items-center justify-center text-stone-500">
         Loading wishlist...
       </div>
     );
 
   if (error)
     return (
-      <div className="flex justify-center items-center min-h-screen text-red-500">
+      <div className="flex min-h-[60vh] items-center justify-center text-red-600">
         {error}
       </div>
     );
 
   if (wishlist.length === 0)
     return (
-      <div className="flex flex-col justify-center items-center min-h-screen gap-4">
-        <p className="text-2xl font-bold">Your wishlist is empty</p>
+      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 py-12 text-center">
+        <p className="text-2xl font-semibold text-stone-950">Your wishlist is empty</p>
         <button
           onClick={() => navigate("/products")}
-          className="bg-black text-white px-6 py-3 rounded-full text-sm hover:bg-gray-900 transition"
+          className="btn-primary px-6 py-3 text-sm"
         >
           Shop Now
         </button>
@@ -60,9 +60,9 @@ export default function Wishlist() {
     );
 
   return (
-    <div className="p-10">
-      <h1 className="text-4xl font-extrabold mb-10">YOUR WISHLIST</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-4">
+    <div className="py-6 lg:py-10">
+      <h1 className="section-title mb-8">Your wishlist</h1>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
         {wishlist.map((item) => (
           <div key={item._id} className="flex flex-col gap-2">
             <ProductCard
@@ -75,7 +75,7 @@ export default function Wishlist() {
             />
             <button
               onClick={() => handleRemove(item._id)}
-              className="text-sm text-red-400 hover:text-red-600 transition underline"
+              className="text-sm font-medium text-red-600 underline underline-offset-4 transition hover:text-red-700"
             >
               Remove
             </button>
@@ -84,12 +84,12 @@ export default function Wishlist() {
       </div>
 
       {/* Pagination — outside the grid */}
-      <div className="flex flex-wrap gap-8 justify-center items-center font-semibold mt-10">
-        <button className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black rounded-md hover:bg-black hover:text-white transition duration-300">
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-8 font-semibold">
+        <button className="btn-secondary h-10 w-10 p-0">
           &larr;
         </button>
         Page 1 of 1
-        <button className="w-8 h-8 border border-black flex items-center justify-center bg-white text-black rounded-md hover:bg-black hover:text-white transition duration-300">
+        <button className="btn-secondary h-10 w-10 p-0">
           &rarr;
         </button>
       </div>
