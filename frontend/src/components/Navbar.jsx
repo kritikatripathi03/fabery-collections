@@ -28,8 +28,6 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full px-3 py-3 sm:px-4 sm:py-4">
       <div className="surface-card mx-auto flex items-center justify-between rounded-[1.75rem] px-4 py-3 sm:px-5 lg:px-6">
-    <nav className="w-full bg-transparent mt-4 px-4 py-4">
-      <div className="flex items-center justify-between px-4">
         {/* Desktop nav links */}
         <div className="hidden lg:flex items-center gap-8 text-sm uppercase tracking-[0.22em] text-stone-600">
           {navLinks.map((link) => (
@@ -80,7 +78,11 @@ export default function Navbar() {
               </Link>
 
               <div className="group relative">
-                <img className="h-12 w-12 cursor-pointer rounded-full border border-transparent transition hover:border-stone-300" src={profilePic} alt="Profile" />
+                <img
+                  className="h-12 w-12 cursor-pointer rounded-full border border-transparent transition hover:border-stone-300"
+                  src={profilePic}
+                  alt="Profile"
+                />
                 {/* Dropdown */}
                 <div className="absolute right-0 top-full z-50 hidden pt-2 group-hover:block">
                   <div className="surface-card-strong w-48 rounded-2xl p-2 shadow-2xl">
@@ -102,40 +104,6 @@ export default function Navbar() {
                       </Link>
                     )}
                     <button
-                      onClick={handleLogout}
-                      className="w-full rounded-xl px-3 py-2 text-left text-sm text-red-600 transition hover:bg-red-50"
-                    >
-                      Logout
-                    </button>
-                  </div>
-              <div className="relative group inline-flex flex-col items-end">
-                <img
-                  className="h-12 w-12 cursor-pointer"
-                  src={profilePic}
-                  alt="Profile"
-                />
-                <div className="absolute top-full right-0 pt-2 hidden group-hover:block z-50">
-                  <div className="w-44 bg-white rounded-xl shadow-lg p-2">
-                    <p className="px-3 py-2 text-sm font-medium text-gray-700 border-b border-gray-100">
-                      {user.name}
-                    </p>
-                    <Link
-                      to="/profile"
-                      className="block px-3 py-2 text-sm hover:bg-gray-50 rounded-lg"
-                    >
-                      My Profile
-                    </Link>
-                    {user.isAdmin && (
-                      <Link
-                        to="/admin"
-                        className="block px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-lg font-medium"
-                      >
-                        Admin Dashboard
-                      </Link>
-                    )}
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg"
                     >
                       Logout
                     </button>
@@ -174,43 +142,9 @@ export default function Navbar() {
                 <Link to="/wishlist" onClick={closeMenu} className="rounded-xl px-3 py-2 font-medium transition hover:bg-stone-100">Wishlist</Link>
                 <Link to="/profile" onClick={closeMenu} className="rounded-xl px-3 py-2 font-medium transition hover:bg-stone-100">Profile</Link>
                 <button onClick={handleLogout} className="rounded-xl px-3 py-2 text-left font-medium text-red-600 transition hover:bg-red-50">Logout</button>
-                <Link
-                  to="/cart"
-                  onClick={closeMenu}
-                  className="font-bold hover:font-extrabold"
-                >
-                  Cart
-                </Link>
-                <Link
-                  to="/wishlist"
-                  onClick={closeMenu}
-                  className="font-bold hover:font-extrabold"
-                >
-                  Wishlist
-                </Link>
-                <Link
-                  to="/profile"
-                  onClick={closeMenu}
-                  className="font-bold hover:font-extrabold"
-                >
-                  Profile
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="text-left text-red-500 font-bold"
-                >
-                  Logout
-                </button>
               </>
             ) : (
               <Link to="/login" onClick={closeMenu} className="rounded-xl px-3 py-2 font-medium transition hover:bg-stone-100">Sign in</Link>
-              <Link
-                to="/login"
-                onClick={closeMenu}
-                className="font-bold hover:font-extrabold"
-              >
-                Sign in
-              </Link>
             )}
           </div>
         </div>
