@@ -15,7 +15,7 @@ export default function Profile() {
       try {
         const { data } = await axios.get("/orders/myorders");
         setOrders(data || []);
-      } catch (err) {
+      } catch {
         setError("Failed to load orders!");
       } finally {
         setLoading(false);
@@ -33,55 +33,70 @@ export default function Profile() {
   };
 
   if (loading) return (
-    <div className="flex justify-center items-center min-h-screen text-gray-500">
+    <div className="flex min-h-[60vh] items-center justify-center text-stone-500">
       Loading profile...
     </div>
   );
 
   if (error) return (
-    <div className="flex justify-center items-center min-h-screen text-red-500">
+    <div className="flex min-h-[60vh] items-center justify-center text-red-600">
       {error}
     </div>
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="py-6 lg:py-10">
+      <div className="surface-card rounded-[2rem] p-6 sm:p-8 lg:p-10">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-5">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-stone-950 text-2xl font-semibold text-white">
+              {user.name.charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <p className="section-kicker">Account</p>
+              <h1 className="mt-2 text-3xl font-semibold tracking-tight text-stone-950">
+                {user.name}
+              </h1>
+              <p className="mt-1 text-sm text-stone-500">{user.email}</p>
+            </div>
+          </div>
 
-      {/* User Info */}
-      <div className="border border-gray-200 rounded-2xl p-6 mb-10 flex items-center gap-6">
-        <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center text-2xl font-bold">
-          {user.name.charAt(0).toUpperCase()}
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold">{user.name}</h1>
-          <p className="text-gray-500 text-sm">{user.email}</p>
-        </div>
-      </div>
-
-      {/* Order History */}
-      <h2 className="text-2xl font-bold mb-6">Order History</h2>
-
-      {orders.length === 0 ? (
-        <div className="flex flex-col items-center gap-4 py-20">
-          <p className="text-gray-500">You haven't placed any orders yet.</p>
           <button
             onClick={() => navigate("/products")}
-            className="bg-black text-white px-6 py-3 rounded-full text-sm hover:bg-gray-900 transition"
+            className="btn-secondary px-5 py-3 text-sm"
+          >
+            Continue Shopping
+          </button>
+        </div>
+
+        <div className="mt-10 flex items-center justify-between border-t border-stone-200 pt-6">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-stone-950">Order History</h2>
+            <p className="mt-1 text-sm text-stone-500">Recent orders and their current status.</p>
+          </div>
+        </div>
+
+      {orders.length === 0 ? (
+        <div className="flex flex-col items-center gap-4 py-20 text-center">
+          <p className="text-stone-500">You haven't placed any orders yet.</p>
+          <button
+            onClick={() => navigate("/products")}
+            className="btn-primary px-6 py-3 text-sm"
           >
             Start Shopping
           </button>
         </div>
       ) : (
-        <div className="flex flex-col gap-6">
+        <div className="mt-8 flex flex-col gap-6">
           {orders.map((order) => (
-            <div key={order._id} className="border border-gray-200 rounded-2xl p-6 flex flex-col gap-4">
+            <div key={order._id} className="surface-card-strong rounded-[2rem] p-6 flex flex-col gap-5">
 
               {/* Order Header */}
-              <div className="flex justify-between items-start">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex flex-col gap-1">
-                  <p className="text-xs text-gray-400">Order ID</p>
-                  <p className="text-sm font-medium">{order._id}</p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="section-kicker">Order ID</p>
+                  <p className="mt-2 text-sm font-medium text-stone-950">{order._id}</p>
+                  <p className="mt-1 text-xs text-stone-500">
                     {new Date(order.createdAt).toLocaleDateString("en-IN", {
                       year: "numeric",
                       month: "long",
@@ -89,29 +104,29 @@ export default function Profile() {
                     })}
                   </p>
                 </div>
-                <div className="flex flex-col items-end gap-2">
-                  <span className={`text-xs px-3 py-1 rounded-full font-medium capitalize ${statusColors[order.status]}`}>
+                <div className="flex flex-col items-start gap-2 sm:items-end">
+                  <span className={`rounded-full px-3 py-1 text-xs font-medium capitalize ${statusColors[order.status]}`}>
                     {order.status}
                   </span>
-                  <p className="font-bold text-lg">₹{order.totalAmount}</p>
+                  <p className="text-lg font-semibold text-stone-950">₹{order.totalAmount}</p>
                 </div>
               </div>
 
               {/* Order Items */}
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 border-t border-stone-200 pt-4">
                 {order.items.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 border-t border-gray-100 pt-3">
+                  <div key={index} className="flex items-center gap-4 rounded-2xl bg-stone-50/80 px-4 py-3">
                     <div className="flex-1">
-                      <p className="text-sm font-medium">{item.product?.name || "Product"}</p>
-                      <p className="text-xs text-gray-400">Size: {item.size} · Qty: {item.quantity}</p>
+                      <p className="text-sm font-medium text-stone-950">{item.product?.name || "Product"}</p>
+                      <p className="text-xs text-stone-500">Size: {item.size} · Qty: {item.quantity}</p>
                     </div>
-                    <p className="text-sm font-semibold">₹{item.price * item.quantity}</p>
+                    <p className="text-sm font-semibold text-stone-950">₹{item.price * item.quantity}</p>
                   </div>
                 ))}
               </div>
 
               {/* Payment method */}
-              <p className="text-xs text-gray-400 uppercase tracking-wide">
+              <p className="section-kicker">
                 Payment: {order.paymentMethod === "cod" ? "Cash on Delivery" : "Online"}
               </p>
 
@@ -119,6 +134,7 @@ export default function Profile() {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }

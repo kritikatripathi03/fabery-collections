@@ -1,34 +1,23 @@
-import search from "../assets/search.png";
-
 export default function Categories() {
     return (
-        <div className="w-full bg-transparent mt-6 px-4 py-4">
-            <div className="max-w-4xl mx-auto lg:ml-2 px-4 sm:px-2 lg:px-6">
-                <div className="flex flex-col gap-1 text-sm tracking-widest mb-4">
-                    <span className="hover:underline"><a href='#'>MEN</a></span>
-                    <span className="hover:underline"><a href='#'>WOMEN</a></span>
-                    <span className="hover:underline"><a href='#'>KIDS</a></span>
-                </div>
+        <div className="section-shell pt-0">
+            <div className="surface-card rounded-[2rem] px-5 py-6 sm:px-8">
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.24em] text-stone-500">
+                        <a href="#" className="chip px-4 py-2">Men</a>
+                        <a href="#" className="chip px-4 py-2">Women</a>
+                        <a href="#" className="chip px-4 py-2">Kids</a>
+                    </div>
 
-                <div className="relative">
-                    <input 
-                    type="text"
-                    placeholder="Search"
-                    className="lg:w-50 bg-gray-200 py-3 pl-10 pr-4 outline-none"
-                    />
-                    {/* Search icon */}
-                    <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500">
-                        <img src={search} className="h-7 w-8"/>
-                        <div>
-                            <div>
-                                <div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </span>
+                    <div className="relative w-full lg:max-w-md">
+                        <input
+                            type="text"
+                            placeholder="Search the collection"
+                            className="input-modern py-3 px-4"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }

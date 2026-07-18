@@ -5,39 +5,46 @@ import arrow from "../assets/arrow.png";
 
 export default function SpecialCollection () {
     return (
-        <div className="w-full flex flex-col lg:flex-row items-stretch px-8 py-8 min-h-[400px] gap-6">
-            <div className="flex flex-col py-6 lg:flex-[0_0_32%] md:flex-[0_0_32%]">
-                <div className="mt-auto text-5xl font-extrabold leading-tight">
-                    NEW <br /> COLLECTION
-                </div>
-                <div className="mt-8 mb-8 text-2xl text-gray-600">
-                    Summer <br /> 2024
-                </div>
-                <div className="mt-auto mb-auto flex items-center justify-between gap-6">
-                    <button className="flex items-center gap-6 bg-gray-200 px-6 py-3">
-                        <span className="font-medium">Go To Shop</span>
-                        <span><img src={arrow} className="h-8 w-8"/></span>
-                    </button>
-                    <div className="flex gap-3">
-                        <button className="border border-gray-300 w-10 h-10 flex items-center justify-center">
-                            ‹
-                        </button>
+        <div className="section-shell">
+            <div className="surface-card rounded-[2.5rem] p-4 sm:p-6 lg:p-8">
+                <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                    <div className="flex flex-col gap-4">
+                        <div>
+                            <div className="section-kicker">Special Drop</div>
+                            <div className="mt-2 text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+                                New <br /> Collection
+                            </div>
+                        </div>
+                        <div className="text-base text-stone-500 sm:text-xl">
+                            Summer <br /> 2024
+                        </div>
+                        <div className="flex flex-wrap items-center gap-3">
+                            <button className="btn-primary px-5 py-3 text-sm">
+                                <span>Go To Shop</span>
+                                <span><img src={arrow} className="h-5 w-5" alt=""/></span>
+                            </button>
+                            <div className="flex gap-3">
+                                <button className="btn-secondary h-11 w-11 p-0">
+                                    ‹
+                                </button>
 
-                        <button className="border border-gray-300 w-10 h-10 flex items-center justify-center">
-                            ›
-                        </button>
+                                <button className="btn-secondary h-11 w-11 p-0">
+                                    ›
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="flex flex-1 items-center gap-6">
-                <div className="flex-1 min-w-0 aspect-[3/4]">
-                    <img src={img1} className="w-full h-full object-cover border border-gray-300"/>
-                </div>
-                <div className="hidden md:block flex-1 min-w-0 aspect-[3/4]">
-                    <img src={img2} className="w-full h-full object-cover border border-gray-300"/>
-                </div>
-                <div className="hidden lg:block flex-1 min-w-0 aspect-[3/4]">
-                    <img src={img3} className="w-full h-full object-cover border border-gray-300"/>
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="overflow-hidden rounded-[2rem] aspect-[3/4]">
+                            <img src={img1} className="h-full w-full object-cover" alt="New collection piece"/>
+                        </div>
+                        <div className="hidden overflow-hidden rounded-[2rem] aspect-[3/4] sm:block">
+                            <img src={img2} className="h-full w-full object-cover" alt="New collection piece"/>
+                        </div>
+                        <div className="hidden overflow-hidden rounded-[2rem] aspect-[3/4] lg:block">
+                            <img src={img3} className="h-full w-full object-cover" alt="New collection piece"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

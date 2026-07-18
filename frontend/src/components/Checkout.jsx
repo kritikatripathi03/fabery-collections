@@ -23,7 +23,7 @@ export default function Checkout() {
       try {
         const { data } = await axios.get("/cart");
         setCart(data.items || []);
-      } catch (err) {
+        } catch {
         setError("Failed to load cart");
       } finally {
         setLoading(false);
@@ -124,17 +124,17 @@ export default function Checkout() {
   );
 
   if (loading) return (
-    <div className="flex justify-center items-center min-h-screen text-gray-500">
+    <div className="flex min-h-[60vh] items-center justify-center text-stone-500">
       Loading checkout...
     </div>
   );
 
   if (cart.length === 0) return (
-    <div className="flex flex-col justify-center items-center min-h-screen gap-4">
-      <p className="text-2xl font-bold">Your cart is empty</p>
+    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 py-12 text-center">
+      <p className="text-2xl font-semibold text-stone-950">Your cart is empty</p>
       <button
         onClick={() => navigate("/products")}
-        className="bg-black text-white px-6 py-3 rounded-full text-sm hover:bg-gray-900 transition"
+        className="btn-primary px-6 py-3 text-sm"
       >
         Shop Now
       </button>
@@ -142,21 +142,21 @@ export default function Checkout() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
-      <h1 className="text-4xl font-extrabold mb-10">CHECKOUT</h1>
+    <div className="py-6 lg:py-10">
+      <h1 className="section-title mb-8">Checkout</h1>
 
-      <div className="flex flex-col lg:flex-row gap-10">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
 
         {/* Left — Shipping Form */}
         <div className="flex-1">
           <form onSubmit={handlePlaceOrder} className="flex flex-col gap-6">
 
             {/* Shipping Address */}
-            <div className="border border-gray-200 rounded-2xl p-6 flex flex-col gap-4">
-              <h2 className="text-lg font-bold">Shipping Address</h2>
+            <div className="surface-card rounded-[2rem] p-6 flex flex-col gap-4">
+              <h2 className="text-lg font-semibold text-stone-950">Shipping Address</h2>
 
               <div className="flex flex-col gap-1">
-                <label className="text-sm font-medium text-gray-700">Full Name</label>
+                <label className="text-sm font-medium text-stone-700">Full Name</label>
                 <input
                   type="text"
                   name="fullName"
@@ -164,12 +164,12 @@ export default function Checkout() {
                   onChange={handleChange}
                   required
                   placeholder="John Doe"
-                  className="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+                  className="input-modern"
                 />
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-sm font-medium text-gray-700">Address</label>
+                <label className="text-sm font-medium text-stone-700">Address</label>
                 <input
                   type="text"
                   name="address"
@@ -177,13 +177,13 @@ export default function Checkout() {
                   onChange={handleChange}
                   required
                   placeholder="123 Main Street"
-                  className="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+                  className="input-modern"
                 />
               </div>
 
               <div className="flex gap-4">
                 <div className="flex flex-col gap-1 flex-1">
-                  <label className="text-sm font-medium text-gray-700">City</label>
+                  <label className="text-sm font-medium text-stone-700">City</label>
                   <input
                     type="text"
                     name="city"
@@ -191,11 +191,11 @@ export default function Checkout() {
                     onChange={handleChange}
                     required
                     placeholder="Delhi"
-                    className="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+                    className="input-modern"
                   />
                 </div>
                 <div className="flex flex-col gap-1 flex-1">
-                  <label className="text-sm font-medium text-gray-700">State</label>
+                  <label className="text-sm font-medium text-stone-700">State</label>
                   <input
                     type="text"
                     name="state"
@@ -203,14 +203,14 @@ export default function Checkout() {
                     onChange={handleChange}
                     required
                     placeholder="Delhi"
-                    className="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+                    className="input-modern"
                   />
                 </div>
               </div>
 
               <div className="flex gap-4">
                 <div className="flex flex-col gap-1 flex-1">
-                  <label className="text-sm font-medium text-gray-700">Pincode</label>
+                  <label className="text-sm font-medium text-stone-700">Pincode</label>
                   <input
                     type="text"
                     name="pincode"
@@ -218,11 +218,11 @@ export default function Checkout() {
                     onChange={handleChange}
                     required
                     placeholder="110001"
-                    className="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+                    className="input-modern"
                   />
                 </div>
                 <div className="flex flex-col gap-1 flex-1">
-                  <label className="text-sm font-medium text-gray-700">Phone</label>
+                  <label className="text-sm font-medium text-stone-700">Phone</label>
                   <input
                     type="text"
                     name="phone"
@@ -230,17 +230,17 @@ export default function Checkout() {
                     onChange={handleChange}
                     required
                     placeholder="9999999999"
-                    className="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+                    className="input-modern"
                   />
                 </div>
               </div>
             </div>
 
             {/* Payment Method */}
-            <div className="border border-gray-200 rounded-2xl p-6 flex flex-col gap-4">
-              <h2 className="text-lg font-bold">Payment Method</h2>
+            <div className="surface-card rounded-[2rem] p-6 flex flex-col gap-4">
+              <h2 className="text-lg font-semibold text-stone-950">Payment Method</h2>
               <div className="flex flex-col gap-3">
-                <label className={`flex items-center gap-4 border rounded-xl px-4 py-3 cursor-pointer transition ${paymentMethod === "cod" ? "border-black" : "border-gray-200"}`}>
+                <label className={`flex items-center gap-4 rounded-2xl border px-4 py-3 cursor-pointer transition ${paymentMethod === "cod" ? "border-stone-950 bg-white" : "border-stone-200 bg-white/70"}`}>
                   <input
                     type="radio"
                     value="cod"
@@ -249,12 +249,12 @@ export default function Checkout() {
                     className="accent-black"
                   />
                   <div>
-                    <p className="text-sm font-medium">Cash on Delivery</p>
-                    <p className="text-xs text-gray-400">Pay when your order arrives</p>
+                    <p className="text-sm font-medium text-stone-950">Cash on Delivery</p>
+                    <p className="text-xs text-stone-500">Pay when your order arrives</p>
                   </div>
                 </label>
 
-                <label className={`flex items-center gap-4 border rounded-xl px-4 py-3 cursor-pointer transition ${paymentMethod === "online" ? "border-black" : "border-gray-200"}`}>
+                <label className={`flex items-center gap-4 rounded-2xl border px-4 py-3 cursor-pointer transition ${paymentMethod === "online" ? "border-stone-950 bg-white" : "border-stone-200 bg-white/70"}`}>
                   <input
                     type="radio"
                     value="online"
@@ -263,8 +263,8 @@ export default function Checkout() {
                     className="accent-black"
                   />
                   <div>
-                    <p className="text-sm font-medium">Online Payment</p>
-                    <p className="text-xs text-gray-400">Pay securely via Razorpay</p>
+                    <p className="text-sm font-medium text-stone-950">Online Payment</p>
+                    <p className="text-xs text-stone-500">Pay securely via Razorpay</p>
                   </div>
                 </label>
               </div>
@@ -272,14 +272,14 @@ export default function Checkout() {
 
             {/* Error */}
             {error && (
-              <p className="text-red-500 text-sm">{error}</p>
+            <p className="text-sm text-red-600">{error}</p>
             )}
 
             {/* Place Order Button */}
             <button
               type="submit"
               disabled={orderLoading}
-              className="w-full bg-black text-white py-4 rounded-full text-sm font-medium hover:bg-gray-900 transition disabled:opacity-50"
+            className="btn-primary w-full py-4 text-sm disabled:opacity-50"
             >
               {orderLoading
                 ? "Processing..."
@@ -291,8 +291,8 @@ export default function Checkout() {
         </div>
 
         {/* Right — Order Summary */}
-        <div className="w-full lg:w-80 h-fit border border-gray-200 rounded-2xl p-6 flex flex-col gap-4">
-          <h2 className="text-xl font-bold">Order Summary</h2>
+        <div className="surface-card h-fit rounded-[2rem] p-6 flex flex-col gap-4">
+          <h2 className="text-xl font-semibold text-stone-950">Order Summary</h2>
 
           <div className="flex flex-col gap-4">
             {cart.map((item) => (
@@ -300,18 +300,18 @@ export default function Checkout() {
                 <img
                   src={item.product.images[0]}
                   alt={item.product.name}
-                  className="w-16 h-16 object-cover border border-gray-200"
+                  className="h-16 w-16 rounded-xl object-cover"
                 />
                 <div className="flex-1">
-                  <p className="text-sm font-medium">{item.product.name}</p>
-                  <p className="text-xs text-gray-400">Size: {item.size} · Qty: {item.quantity}</p>
+                  <p className="text-sm font-medium text-stone-950">{item.product.name}</p>
+                  <p className="text-xs text-stone-500">Size: {item.size} · Qty: {item.quantity}</p>
                 </div>
-                <p className="text-sm font-semibold">₹{item.product.price * item.quantity}</p>
+                <p className="text-sm font-semibold text-stone-950">₹{item.product.price * item.quantity}</p>
               </div>
             ))}
           </div>
 
-          <div className="border-t border-gray-100 pt-4 flex flex-col gap-2 text-sm text-gray-600">
+          <div className="soft-divider border-t pt-4 flex flex-col gap-2 text-sm text-stone-600">
             <div className="flex justify-between">
               <span>Subtotal</span>
               <span>₹{total}</span>
@@ -322,7 +322,7 @@ export default function Checkout() {
             </div>
           </div>
 
-          <div className="border-t border-gray-100 pt-4 flex justify-between font-bold text-lg">
+          <div className="soft-divider border-t pt-4 flex justify-between text-lg font-semibold text-stone-950">
             <span>Total</span>
             <span>₹{total}</span>
           </div>

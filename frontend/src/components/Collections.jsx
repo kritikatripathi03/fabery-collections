@@ -34,48 +34,43 @@ const products = [
 
 export default function Collections() {
   return (
-    <div className="px-8 py-8">
-      <div className="flex items-end justify-between min-h-[150px]">
-        <div className="text-5xl font-extrabold leading-tight">
-          FÄBERY <br /> COLLECTIONS <br /> 25-26
-        </div>
-      </div>
-      <div className="w-full flex items-center justify-between py-6 border-b border-gray-200">
-        <div className="flex items-baseline gap-8 text-sm">
-          <span className="font-semibold">(ALL)</span>
-          <span className="text-gray-500 hover:text-black cursor-pointer">
-            Men
-          </span>
-          <span className="text-gray-500 hover:text-black cursor-pointer">
-            Women
-          </span>
-          <span className="text-gray-500 hover:text-black cursor-pointer">
-            KID
-          </span>
-        </div>
-        <div className="flex gap-12 text-sm">
-          <div className="cursor-pointer hover:underline">Filters(+)</div>
-
-          {/* Sorts */}
-          <div className="flex flex-col items-end">
-            <div className="cursor-pointer hover:underline">Sorts(-)</div>
-            <span className="text-gray-500 text-xs mt-1">Less to more</span>
-            <span className="text-gray-500 text-xs">More to Less</span>
+    <div className="section-shell">
+      <div className="surface-card rounded-[2.5rem] p-4 sm:p-6 lg:p-8">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <div className="section-kicker">Collections</div>
+            <div className="mt-2 text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+              FÄBERY <br /> Collections <br /> 25-26
+            </div>
           </div>
         </div>
+        <div className="mt-5 flex flex-col gap-4 border-b border-stone-200 pb-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-wrap items-center gap-3 text-sm">
+            <span className="chip chip-active">(All)</span>
+            <span className="chip">Men</span>
+            <span className="chip">Women</span>
+            <span className="chip">Kids</span>
+          </div>
+          <div className="flex flex-wrap gap-4 text-sm text-stone-600">
+            <div className="chip">Filters (+)</div>
+            <div className="chip">
+              Sorts (-)
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {products.map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              category={product.category}
+              title={product.title}
+              price={product.price}
+              aspect="aspect-[1/1]"
+            />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-4">
-                {products.map((product, index) => (
-                  <ProductCard
-                    key={index}
-                    image={product.image}
-                    category={product.category}
-                    title={product.title}
-                    price={product.price}
-                    aspect="aspect-[1/1]"
-                  />
-                ))}
-              </div> 
     </div>
   );
 }

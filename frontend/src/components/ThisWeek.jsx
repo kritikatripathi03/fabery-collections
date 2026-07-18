@@ -33,28 +33,31 @@ const products = [
 
 export default function ThisWeek() {
   return (
-    <div className="px-4 py-4">
-      <div className="flex items-end justify-between px-4 py-4 min-h-[150px]">
-        <div className="text-5xl font-extrabold leading-tight">
-          NEW <br /> THIS WEEK
+    <div className="section-shell">
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <div className="section-kicker">Curated Edit</div>
+          <div className="mt-2 text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+            New <br /> This Week
+          </div>
         </div>
         <div className="flex flex-col">
-          <a href="#" className="mt-auto text-gray-600 hover:underline">
+          <a href="#" className="btn-ghost px-0 text-sm uppercase tracking-[0.24em] text-stone-500">
             See All
           </a>
         </div>
       </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-4">
-          {products.map((product, index) => (
-            <ProductCard
-              key={index}
-              image={product.image}
-              category={product.category}
-              title={product.title}
-              price={product.price}
-            />
-          ))}
-        </div>
+      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {products.map((product, index) => (
+          <ProductCard
+            key={index}
+            image={product.image}
+            category={product.category}
+            title={product.title}
+            price={product.price}
+          />
+        ))}
       </div>
+    </div>
   );
 }

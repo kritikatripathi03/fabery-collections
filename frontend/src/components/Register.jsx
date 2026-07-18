@@ -9,7 +9,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Register() {
     e.preventDefault();
     setError("");
 
-    if (password.length != confirmPassword.length) {
+    if (password !== confirmPassword) {
       return setError("Passwords do not match");
     }
 
@@ -43,21 +43,22 @@ export default function Register() {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-4">
-      <div className="w-full max-w-md">
+    <div className="flex min-h-[calc(100vh-140px)] items-center justify-center py-10">
+      <div className="surface-card w-full max-w-md rounded-[2rem] px-6 py-8 sm:px-8">
         {/* Header */}
         <div className="mb-10 text-center">
-          <h1 className="text-4xl font-bold tracking-tight mb-2">
+          <p className="section-kicker mb-4">Join us</p>
+          <h1 className="text-4xl font-semibold tracking-tight mb-2 text-stone-950">
             Create account
           </h1>
-          <p className="text-gray-500 text-sm">
+          <p className="text-sm text-stone-500">
             Join FABERY and start shopping
           </p>
         </div>
 
         {/* Error message */}
         {error && (
-          <div className="mb-6 px-4 py-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl">
+          <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
@@ -65,7 +66,7 @@ export default function Register() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-stone-700">
               Full Name
             </label>
             <input
@@ -74,24 +75,24 @@ export default function Register() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+              className="input-modern"
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">Email</label>
+            <label className="text-sm font-medium text-stone-700">Email</label>
             <input
               type="email"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+              className="input-modern"
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-stone-700">
               Password
             </label>
             <input
@@ -100,12 +101,12 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+              className="input-modern"
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-stone-700">
               Confirm Password
             </label>
             <input
@@ -114,23 +115,23 @@ export default function Register() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition"
+              className="input-modern"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-black text-white py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition disabled:opacity-50 mt-2"
+            className="btn-primary mt-2 w-full py-3 text-sm disabled:opacity-50"
           >
             {loading ? "Creating account..." : "Create account"}
           </button>
         </form>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-500 mt-8">
+        <p className="mt-8 text-center text-sm text-stone-500">
           Already have an account?{" "}
-          <Link to="/login" className="text-black font-medium underline">
+          <Link to="/login" className="font-semibold text-stone-950 underline underline-offset-4">
             Sign in
           </Link>
         </p>

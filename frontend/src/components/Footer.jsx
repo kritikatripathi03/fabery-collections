@@ -1,66 +1,38 @@
 export default function Footer() {
   return (
-    <div className="bg-gray-300/50">
-      <div className="flex flex-row items-center justify-between px-60 py-40">
-        <div className="flex flex-col">
-          <span className="font-medium text-gray-600">INFO</span>
-          <br />
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              HOME
-            </a>
-          </span>
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              ABOUT
-            </a>
-          </span>
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              CAREERS
-            </a>
-          </span>
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              CONTACT US
-            </a>
-          </span>
-        </div>
-        <div className="flex flex-col">
-          <span className="font-medium text-gray-600">ADDRESS</span>
-          <br />
-          <span className="hover:underline">
-            <a href="#" className="font-medium">
-              DLF Cybercity <br />
-              DLF Phase 2 <br />
-              Sector 24, Gurugram <br />
+    <div className="section-shell pb-8">
+      <div className="surface-card rounded-[2rem] px-6 py-8 sm:px-8 lg:px-10">
+        <div className="grid gap-10 md:grid-cols-3">
+          <div>
+            <span className="section-kicker">Info</span>
+            <div className="mt-5 flex flex-col gap-3 text-sm text-stone-600">
+              <a href="/" className="transition hover:text-stone-950">Home</a>
+              <a href="/about" className="transition hover:text-stone-950">About</a>
+              <a href="#" className="transition hover:text-stone-950">Careers</a>
+              <a href="#" className="transition hover:text-stone-950">Contact us</a>
+            </div>
+          </div>
+          <div>
+            <span className="section-kicker">Address</span>
+            <p className="mt-5 max-w-sm text-sm leading-7 text-stone-600">
+              DLF Cybercity
+              <br />
+              DLF Phase 2
+              <br />
+              Sector 24, Gurugram
+              <br />
               Haryana, India, 122002
-            </a>
-          </span>
-        </div>
-        <div className="flex flex-col">
-          <span className="font-medium text-gray-600">SOCIALS</span>
-          <br />
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              LinkedIn
-            </a>
-          </span>
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              Instagram
-            </a>
-          </span>
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              Facebook
-            </a>
-          </span>
-          <span>
-            <a href="#" className="hover:underline font-medium">
-              X (previously Twitter)
-            </a>
-          </span>
+            </p>
+          </div>
+          <div>
+            <span className="section-kicker">Socials</span>
+            <div className="mt-5 flex flex-col gap-3 text-sm text-stone-600">
+              <a href="#" className="transition hover:text-stone-950">LinkedIn</a>
+              <a href="#" className="transition hover:text-stone-950">Instagram</a>
+              <a href="#" className="transition hover:text-stone-950">Facebook</a>
+              <a href="#" className="transition hover:text-stone-950">X / Twitter</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
