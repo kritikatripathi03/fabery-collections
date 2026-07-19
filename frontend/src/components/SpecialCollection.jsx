@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import img1 from "../assets/oversized-tshirt.jpg";
 import img2 from "../assets/jeans.jpg";
 import img3 from "../assets/backside.jpg";
@@ -19,10 +20,10 @@ export default function SpecialCollection () {
                             Summer <br /> 2024
                         </div>
                         <div className="flex flex-wrap items-center gap-3">
-                            <button className="btn-primary px-5 py-3 text-sm">
+                            <Link to="/products" className="btn-primary px-5 py-3 text-sm">
                                 <span>Go To Shop</span>
                                 <span><img src={arrow} className="h-5 w-5" alt=""/></span>
-                            </button>
+                            </Link>
                             <div className="flex gap-3">
                                 <button className="btn-secondary h-11 w-11 p-0">
                                     ‹
