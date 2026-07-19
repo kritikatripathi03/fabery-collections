@@ -1,37 +1,25 @@
+import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
-import tshirt1 from "../assets/t-shirt-1.jpg";
-import tshirt2 from "../assets/t-shirt-2.jpg";
-import tshirt3 from "../assets/t-shirt-3.jpg";
-import tshirt4 from "../assets/t-shirt-4.png";
-
-const products = [
-  {
-    image: tshirt1,
-    category: "V-Neck T-Shirt",
-    title: "Embroidered Seersucker Shirt",
-    price: "99",
-  },
-  {
-    image: tshirt2,
-    category: "Cotton T Shirt",
-    title: "Basic Slim Fit T-Shirt",
-    price: "99",
-  },
-  {
-    image: tshirt3,
-    category: "Henley T-Shirt",
-    title: "Blurred Print T-Shirt",
-    price: "99",
-  },
-  {
-    image: tshirt4,
-    category: "Crewneck T-Shirt",
-    title: "Full Sleeve Zipper",
-    price: "99",
-  },
-];
+import axios from "../api/axios";
 
 export default function ThisWeek() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await axios.get("/products");
+        setProducts(data);
+      } catch (err) {
+        console.error("Failed to load products in ThisWeek:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div className="section-shell">
       <div className="flex items-end justify-between gap-4">
@@ -42,22 +30,30 @@ export default function ThisWeek() {
           </div>
         </div>
         <div className="flex flex-col">
-          <a href="#" className="btn-ghost px-0 text-sm uppercase tracking-[0.24em] text-stone-500">
+          <a href="/products" className="btn-ghost px-0 text-sm uppercase tracking-[0.24em] text-stone-500">
             See All
           </a>
         </div>
       </div>
-      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {products.map((product, index) => (
-          <ProductCard
-            key={index}
-            image={product.image}
-            category={product.category}
-            title={product.title}
-            price={product.price}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <div className="flex h-48 items-center justify-center text-stone-500">
+          Loading products...
+        </div>
+      ) : (
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {products.slice(0, 4).map((product) => (
+            <ProductCard
+              key={product._id}
+              id={product._id}
+              image={product.images?.[0]}
+              category={product.category}
+              title={product.name}
+              price={product.price}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
+
