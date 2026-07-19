@@ -1,17 +1,30 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import axios from "../api/axios";
 
 export default function Products() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "");
   const [selectedSize, setSelectedSize] = useState("");
   const [sortBy, setSortBy] = useState("relevance");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+
+  useEffect(() => {
+    const cat = searchParams.get("category");
+    if (cat !== null) {
+      setSelectedCategory(cat);
+    }
+    const search = searchParams.get("search");
+    if (search !== null) {
+      setSearchQuery(search);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,8 +44,10 @@ export default function Products() {
   const filtered = products
     .filter((p) => {
       const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = selectedCategory ? p.category === selectedCategory : true;
-      const matchesSize = selectedSize ? p.sizes.includes(selectedSize) : true;
+      const matchesCategory = selectedCategory
+        ? p.category?.toLowerCase() === selectedCategory.toLowerCase()
+        : true;
+      const matchesSize = selectedSize ? p.sizes?.includes(selectedSize) : true;
       const matchesMin = minPrice ? p.price >= Number(minPrice) : true;
       const matchesMax = maxPrice ? p.price <= Number(maxPrice) : true;
       return matchesSearch && matchesCategory && matchesSize && matchesMin && matchesMax;
@@ -114,15 +129,17 @@ export default function Products() {
           </div>
 
           {/* Clear filters */}
-          {(selectedCategory || selectedSize || minPrice || maxPrice) && (
+          {(selectedCategory || selectedSize || minPrice || maxPrice || searchQuery) && (
             <button
               onClick={() => {
                 setSelectedCategory("");
                 setSelectedSize("");
                 setMinPrice("");
                 setMaxPrice("");
+                setSearchQuery("");
+                setSearchParams({});
               }}
-                className="mt-6 text-sm font-medium text-red-600 underline underline-offset-4 text-left"
+              className="mt-6 text-sm font-medium text-red-600 underline underline-offset-4 text-left"
             >
               Clear all filters
             </button>
