@@ -94,8 +94,21 @@ export default function Products() {
                 <input
                   type="number"
                   placeholder="₹"
+                  min="0"
                   value={minPrice}
-                  onChange={(e) => setMinPrice(e.target.value)}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val !== "" && Number(val) < 0) {
+                      setMinPrice("");
+                    } else {
+                      setMinPrice(val);
+                    }
+                  }}
+                  onBlur={() => {
+                    if (minPrice && maxPrice && Number(minPrice) > Number(maxPrice)) {
+                      setMaxPrice("");
+                    }
+                  }}
                   className="input-modern max-w-[90px] px-3 py-2"
                 />
               </div>
@@ -104,8 +117,21 @@ export default function Products() {
                 <input
                   type="number"
                   placeholder="₹"
+                  min="0"
                   value={maxPrice}
-                  onChange={(e) => setMaxPrice(e.target.value)}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val !== "" && Number(val) < 0) {
+                      setMaxPrice("");
+                    } else {
+                      setMaxPrice(val);
+                    }
+                  }}
+                  onBlur={() => {
+                    if (minPrice && maxPrice && Number(maxPrice) < Number(minPrice)) {
+                      setMinPrice("");
+                    }
+                  }}
                   className="input-modern max-w-[90px] px-3 py-2"
                 />
               </div>
